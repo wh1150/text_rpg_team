@@ -19,6 +19,7 @@ public:
 	int GetLevel() const { return level; }
 	string GetName() const { return name; }
 	string SetName(const string& name) { this->name = name; return this->name; }	
+	void Attack(Character* target) override;
  
 private:
     int level;
