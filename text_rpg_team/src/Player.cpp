@@ -2,10 +2,11 @@
 
 using namespace std;
 
-Player::Player(const std::string& name, int level, int exp, int maxExp)
+Player::Player(const std::string& name, int level, int exp, int maxExp, int gold)
     : level(level),
     exp(exp),
-    maxExp(maxExp)
+    maxExp(maxExp),
+    gold(gold)
 {
     this->name = name;
     this->hp = 200;

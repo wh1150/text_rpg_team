@@ -65,7 +65,7 @@ void LogManager::PrintReward(Player& player, Monster& monster)
 	std::cout << player.GetName() << " gained "
 		<< exp << " EXP and "
 		<< gold << " Gold. "
-		<< "Current EXP: " << player.GetEXP()
+		<< "Current EXP: " << player.GetExp()
 		<< ", Gold: " << player.GetGold()
 		<< std::endl;
 }
