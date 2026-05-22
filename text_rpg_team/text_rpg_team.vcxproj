@@ -168,31 +168,23 @@
     <ClCompile Include="src/CrazyChihuahuaMonster.cpp" />
     <ClCompile Include="src/HellRabbitMonster.cpp" />
     <ClCompile Include="src/ShadowCatMonster.cpp" />
-    <ClCompile Include="src/Monster.cpp" />
-    <ClCompile Include="src/ShadowCatMonster.cpp" />
     <ClCompile Include="src/AttackBoost.cpp" />
-    <ClCompile Include="src/CrazyChihuahuaMonster.cpp" />
     <ClCompile Include="src/HealthPotion.cpp" />
-    <ClCompile Include="src/HellRabbitMonster.cpp" />
     <ClCompile Include="src/Item.cpp" />
     <ClCompile Include="src/LogManager.cpp" />
     <ClCompile Include="src\Player.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Character.h" />
-    <ClInclude Include="include\Player.h" />
     <ClInclude Include="include\Monster.h" />
     <ClInclude Include="include\CrazyChihuahuaMonster.h" />
     <ClInclude Include="include\HellRabbitMonster.h" />
-    <ClInclude Include="include\ShadowCatMonster.h" />
-    <ClInclude Include="include\Monster.h" />
     <ClInclude Include="include\ShadowCatMonster.h" />
     <ClInclude Include="include\AttackBoost.h" />
-    <ClInclude Include="include\CrazyChihuahuaMonster.h" />
     <ClInclude Include="include\HealthPotion.h" />
-    <ClInclude Include="include\HellRabbitMonster.h" />
     <ClInclude Include="include\Item.h" />
     <ClInclude Include="include\LogManager.h" />
+    <ClInclude Include="include\Player.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
