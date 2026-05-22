@@ -3,11 +3,16 @@
 
 class Monster : public Character {
 public:
-	Monster(int playerLevel);
 
 	int GetDropGold() const { return dropGold; }
+	void Attack(Character* target) override;
 
-private:
-	int dropGold;
+protected:
+
+	Monster() : dropGold(0), hpScale(0), attackPowerScale(0) {}
 	void SetMonsterAbility(int playerLevel);
+
+	int dropGold;
+	int hpScale;
+	int attackPowerScale;
 };

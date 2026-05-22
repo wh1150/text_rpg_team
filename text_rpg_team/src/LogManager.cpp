@@ -7,6 +7,7 @@
 #include "Item.h"
 
 
+
 void LogManager::Print(std::string message)
 {
 	std::cout << message << std::endl;
@@ -19,31 +20,20 @@ void LogManager::PrintStartBattle(Monster& monster)
 		<< monster.GetMaxHp()
 		<< " ATK: "
 		<< monster.GetAttackPower()
-		<< std::endl;
+		<< "\n";
 }
 
-void LogManager::PrintPlayerAttack(Player& player, Monster& monster)
-{
-	std::cout << player.GetName()
-		<< " attacks "
-		<< monster.GetName()
-		<< "! "
-		<< monster.GetName()
-		<< " HP: "
-		<< monster.GetHp()
-		<< std::endl;
-}
 
-void LogManager::PrintMonsterAttack(Player& player, Monster& monster)
+void LogManager::PrintAttack(Character& attacker, Character& defender)
 {
-	std::cout << monster.GetName()
+	std::cout << attacker.GetName()
 		<< " attacks "
-		<< player.GetName()
+		<< defender.GetName()
 		<< "! "
-		<< player.GetName()
+		<< defender.GetName()
 		<< " HP: "
-		<< player.GetHp()
-		<< std::endl;
+		<< defender.GetHp()
+		<< "\n";
 }
 
 void LogManager::PrintStatus(Player& player)
@@ -53,48 +43,41 @@ void LogManager::PrintStatus(Player& player)
 		<< " LEVEL: " << player.GetLevel()
 		<< " HP: " << player.GetMaxHp()
 		<< " POWER: " << player.GetAttackPower()
-		<< std::endl;
+		<< "\n";
 }
 
-// TODO : Connect EXP / Gold reward values later
+
 void LogManager::PrintReward(Player& player, Monster& monster)
 {
-	int exp = 0;
+	int exp = 0; //TODO: Calculate EXP based on monster's level and player's level
 	int gold = monster.GetDropGold();
-
 	std::cout << player.GetName() << " gained "
 		<< exp << " EXP and "
 		<< gold << " Gold. "
-		<< "Current EXP: " << player.GetEXP()
+		<< "Current EXP: " << player.GetExp()
 		<< ", Gold: " << player.GetGold()
-		<< std::endl;
+		<< "\n";
 }
 
-//TODO
 void LogManager::PrintUseItem(Item& item)
 {
-	/**
-	* TODO:
-	* PrintItem LogMessage
-	*/
+	std::cout << "You used an item: "
+		<< item.GetName() << "!\n";
 }
 
-//TODO
 void LogManager::PrintGetItem(Item& item)
 {
-	/**
-	* TODO:
-	* PrintGetItem LogMessage
-	*/
+	std::cout << "You obtained an item: "
+		<< item.GetName() << "!\n";
 }
 
-//TODO
+
 void LogManager::AddKill(Monster& monster)
 {
 	killCount[monster.GetName()]++;
 }
 
-// TODO
+
 void LogManager::ShowKillCount()
 {
 	std::cout << "\n===== Monster Kill Count =====\n";
@@ -103,7 +86,7 @@ void LogManager::ShowKillCount()
 		std::cout << monster.first
 			<< " : "
 			<< monster.second
-			<< std::endl;
+			<< "\n";
 	}
 	std::cout << "==============================\n";
 }
