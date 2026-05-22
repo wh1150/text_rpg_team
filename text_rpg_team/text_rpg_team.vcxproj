@@ -154,17 +154,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Character.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Monster.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="src\AttackBoost.cpp" />
     <ClCompile Include="src\HealthPotion.cpp" />
     <ClCompile Include="src\Item.cpp" />
     <ClCompile Include="src\LogManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Character.h" />
     <ClInclude Include="include\AttackBoost.h" />
     <ClInclude Include="include\HealthPotion.h" />
     <ClInclude Include="include\Item.h" />
     <ClInclude Include="include\LogManager.h" />
+    <ClInclude Include="Monster.h" />
+    <ClInclude Include="Player.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
