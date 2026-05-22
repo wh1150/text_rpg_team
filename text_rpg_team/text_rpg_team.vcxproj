@@ -154,7 +154,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Item\AttackBoost.cpp" />
+    <ClCompile Include="Item\HealthPotion.cpp" />
+    <ClCompile Include="Item\Item.cpp" />
     <ClCompile Include="Main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Item\AttackBoost.h" />
+    <ClInclude Include="Item\HealthPotion.h" />
+    <ClInclude Include="Item\Item.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
