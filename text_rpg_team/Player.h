@@ -17,6 +17,7 @@ public:
 	int SetExp(int exp);
 	int GetExp(int exp) const { return this->exp; }
 	int GetLevel() const { return level; }
+	int Attack(Character* target) override;
     
  
 private:
