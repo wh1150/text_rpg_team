@@ -172,11 +172,16 @@
     <ClCompile Include="src\AttackBoost.cpp" />
     <ClCompile Include="src\HealthPotion.cpp" />
     <ClCompile Include="src\Item.cpp" />
+    <ClCompile Include="src\LogManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\AttackBoost.h" />
     <ClInclude Include="include\HealthPotion.h" />
     <ClInclude Include="include\Item.h" />
+
+
+
+    <ClInclude Include="include\LogManager.h" />
 
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
