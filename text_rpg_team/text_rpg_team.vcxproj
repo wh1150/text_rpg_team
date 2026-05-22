@@ -154,7 +154,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Character.cpp" />
+    <ClCompile Include="CrazyChihuahuaMonster.cpp" />
+    <ClCompile Include="HellRabbitMonster.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Monster.cpp" />
+    <ClCompile Include="ShadowCatMonster.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Character.h" />
+    <ClInclude Include="CrazyChihuahuaMonster.h" />
+    <ClInclude Include="HellRabbitMonster.h" />
+    <ClInclude Include="Monster.h" />
+    <ClInclude Include="ShadowCatMonster.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
