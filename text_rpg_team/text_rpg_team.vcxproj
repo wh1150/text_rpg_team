@@ -160,17 +160,32 @@
     <ClCompile Include="Main.cpp" />
 
     <ClCompile Include="Monster.cpp" />
+
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="ShadowCatMonster.cpp" />
+    <ClCompile Include="src\Monster.cpp" />
+    <ClCompile Include="src\ShadowCatMonster.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Character.h" />
     <ClInclude Include="CrazyChihuahuaMonster.h" />
     <ClInclude Include="HellRabbitMonster.h" />
+    <ClInclude Include="include\Character.h" />
+    <ClInclude Include="include\CrazyChihuahuaMonster.h" />
+    <ClInclude Include="include\HellRabbitMonster.h" />
+    <ClInclude Include="include\Monster.h" />
+    <ClInclude Include="include\ShadowCatMonster.h" />
     <ClInclude Include="Monster.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="ShadowCatMonster.h" />
 
     <ClCompile Include="src\AttackBoost.cpp" />
+
+    <ClCompile Include="src\Character.cpp" />
+
+    <ClCompile Include="src\CrazyChihuahuaMonster.cpp" />
     <ClCompile Include="src\HealthPotion.cpp" />
+    <ClCompile Include="src\HellRabbitMonster.cpp" />
     <ClCompile Include="src\Item.cpp" />
     <ClCompile Include="src\LogManager.cpp" />
   </ItemGroup>
