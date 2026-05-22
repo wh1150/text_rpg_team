@@ -49,7 +49,7 @@ void LogManager::PrintStatus(Player& player)
 
 void LogManager::PrintReward(Player& player, Monster& monster)
 {
-	int exp = 0; //TODO: Calculate EXP based on monster's level and player's level
+	int exp = 50; // get EXP is always +50
 	int gold = monster.GetDropGold();
 	std::cout << player.GetName() << " gained "
 		<< exp << " EXP and "
