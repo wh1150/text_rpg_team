@@ -2,7 +2,7 @@
 
 using namespace std;
 
-Player::Player(const std::string& name, int level, int exp, int maxExp, int gold)
+Player::Player(int level, int exp, int maxExp, int gold)
     : level(level),
     exp(exp),
     maxExp(maxExp),
