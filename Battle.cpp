@@ -1,84 +1,68 @@
-// Battle.cpp
-#include <cstdlib>
-#include "Battle.h"
+// Shop.cpp
+#include "Shop.h"
 
-void Battle(Character& player, Monster& monster)
+void OpenShop(Character& player)
 {
-    cout << "======================" << endl;
-    cout << monster.name << " µîÀå!" << endl;
-    cout << "¸ó½ºÅÍ HP : " << monster.hp << endl;
-    cout << "======================" << endl;
+    int choice;
 
-    while (player.hp > 0 && monster.hp > 0)
+    cout << "========== ìƒì  ==========\n";
+    cout << "ë³´ìœ  ê³¨ë“œ : " << player.gold << "\n";
+    cout << "1. ì²´ë ¥ íšŒë³µ (10 Gold)\n";
+    cout << "2. ê³µê²©ë ¥ ì¦ê°€ (20 Gold)\n";
+    cout << "3. ìƒì  ë‚˜ê°€ê¸°\n";
+
+    cin >> choice;
+
+    switch (choice)
     {
-        cout << "[ÇÃ·¹ÀÌ¾î °ø°Ý!]" << endl;
-
-        monster.hp -= player.attack;
-
-        if (monster.hp < 0)
+        case 1:
         {
-            monster.hp = 0;
-        }
+            if (player.gold >= 10)
+            {
+                player.gold -= 10;
 
-        cout << monster.name << " HP : " << monster.hp << endl;
+                player.hp = player.maxHp;
 
-        if (monster.hp <= 0)
-        {
-            cout << monster.name << " Ã³Ä¡ ¼º°ø!" << endl;
+                cout << "ì²´ë ¥ì„ ëª¨ë‘ íšŒë³µí–ˆìŠµë‹ˆë‹¤!\n";
+            }
+            else
+            {
+                cout << "ê³¨ë“œê°€ ë¶€ì¡±í•©ë‹ˆë‹¤!\n";
+            }
 
             break;
         }
 
-        cout << "[¸ó½ºÅÍ °ø°Ý!]" << endl;
-
-        player.hp -= monster.attack;
-
-        if (player.hp < 0)
+        case 2:
         {
-            player.hp = 0;
+            if (player.gold >= 20)
+            {
+                player.gold -= 20;
+
+                player.attack += 5;
+
+                cout << "ê³µê²©ë ¥ì´ ì¦ê°€í–ˆìŠµë‹ˆë‹¤!\n";
+                cout << "í˜„ìž¬ ê³µê²©ë ¥ : "
+                    << player.attack << "\n";
+            }
+            else
+            {
+                cout << "ê³¨ë“œê°€ ë¶€ì¡±í•©ë‹ˆë‹¤!\n";
+            }
+
+            break;
         }
 
-        cout << "ÇÃ·¹ÀÌ¾î HP : " << player.hp << endl;
-
-    }
-
-    if (player.hp > 0)
-    {
-        cout << "ÀüÅõ ½Â¸®!" << endl;
-
-        player.exp += 50;
-
-        cout << "°æÇèÄ¡ +50" << endl;
-
-        int rewardGold = 10 + rand() % 11;
-
-        player.gold += rewardGold;
-
-        cout << "°ñµå +" << rewardGold << endl;
-
-        int dropChance = rand() % 100;
-
-        if (dropChance < 30)
+        case 3:
         {
-            cout << "¾ÆÀÌÅÛ È¹µæ!" << endl;
-        }
-        else
-        {
-            cout << "¾ÆÀÌÅÛ ¾øÀ½!" << endl;
+            cout << "ìƒì ì„ ì¢…ë£Œí•©ë‹ˆë‹¤.\n";
+            break;
         }
 
-        if (player.exp >= 100)
+        default:
         {
-            player.level++;
-
-            player.exp -= 100;
-
-            cout << "·¹º§ ¾÷!" << endl;
-            cout << "ÇöÀç ·¹º§ : " << player.level << endl;
+            cout << "ìž˜ëª»ëœ ìž…ë ¥ìž…ë‹ˆë‹¤.\n";
+            break;
         }
-    }
-    else
-    {
-        cout << "ÇÃ·¹ÀÌ¾î ÆÐ¹è..." << endl;
     }
 }
