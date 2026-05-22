@@ -41,24 +41,3 @@ int Player::SetExp(int exp)
 	}
     return this->exp;
 }
-
-int Player::GetExp(int exp) const
-{
-    return this->exp;
-}
-
-int Player::GetLevel() const
-{
-    return this->level;
-}
-
-int Player::GetGold() const
-{
-    return this->gold;
-}
-
-int Player::SetGold(int gold)
-{
-    this->gold = gold;
-    return this->gold;
-}
