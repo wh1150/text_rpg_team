@@ -26,18 +26,18 @@ public:
 	// Print PlayerStatus Message
 	void PrintStatus(Player& player);
 
-	// TODO : Print reward message
+	// Print reward message
 	void PrintReward(Player& player, Monster& monster);
 
-	//: Print item usage message
+	// Print item usage message
 	void PrintUseItem(Item& item);
 
 	// Print item message
 	void PrintGetItem(Item& item);
 
-	// TODO : Add monster kill count
+	// Add monster kill count
 	void AddKill(Monster& monster);
 
-	// TODO : Show monster kill count
+	// Show monster kill count
 	void ShowKillCount();
 };

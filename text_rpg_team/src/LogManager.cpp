@@ -71,13 +71,13 @@ void LogManager::PrintGetItem(Item& item)
 		<< item.GetName() << "!\n";
 }
 
-//TODO
+
 void LogManager::AddKill(Monster& monster)
 {
 	killCount[monster.GetName()]++;
 }
 
-// TODO
+
 void LogManager::ShowKillCount()
 {
 	std::cout << "\n===== Monster Kill Count =====\n";
