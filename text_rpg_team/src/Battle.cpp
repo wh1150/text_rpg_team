@@ -4,5 +4,5 @@
 using namespace std;
 
 void BattleTest() {
-	cout << "BattleTest\n";
+	cout << "BattleTest11\n";
 }
