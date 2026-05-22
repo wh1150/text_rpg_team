@@ -172,9 +172,11 @@
     <ClCompile Include="src/HealthPotion.cpp" />
     <ClCompile Include="src/Item.cpp" />
     <ClCompile Include="src/LogManager.cpp" />
+    <ClCompile Include="src\Battle.cpp" />
     <ClCompile Include="src\Player.cpp"/>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Battle.h" />
     <ClInclude Include="include\Character.h" />
     <ClInclude Include="include\Monster.h" />
     <ClInclude Include="include\CrazyChihuahuaMonster.h" />
