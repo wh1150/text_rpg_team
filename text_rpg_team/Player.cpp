@@ -30,3 +30,35 @@ int Player::SetAttackPower(int attackPower)
     this->attackPower = attackPower;
     return this->attackPower;
 }
+
+int Player::SetExp(int exp)
+{
+    this->exp = exp;
+    if(exp>= maxExp)
+    {
+        level++;
+        exp -= maxExp;
+	}
+    return this->exp;
+}
+
+int Player::GetExp(int exp) const
+{
+    return this->exp;
+}
+
+int Player::GetLevel() const
+{
+    return this->level;
+}
+
+int Player::GetGold() const
+{
+    return this->gold;
+}
+
+int Player::SetGold(int gold)
+{
+    this->gold = gold;
+    return this->gold;
+}
