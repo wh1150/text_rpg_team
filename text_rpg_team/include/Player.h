@@ -15,7 +15,7 @@ public:
 	int GetGold() const { return gold; }
 	int SetGold(int gold) { this->gold = gold; return this->gold; }
 	int SetExp(int exp);
-	int GetExp(int exp) const { return this->exp; }
+	int GetExp() const { return this->exp; }
 	int GetLevel() const { return level; }
     
  
