@@ -1,6 +1,7 @@
 ﻿#include "Battle.h"
-#include "iostream"
+#include <iostream>
 
+using namespace std;
 
 void BattleTest() {
 	cout << "BattleTest\n";
