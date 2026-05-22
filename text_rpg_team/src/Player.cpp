@@ -32,6 +32,10 @@ int Player::SetAttackPower(int attackPower)
     return this->attackPower;
 }
 
+void Player::Attack(Character* target) {
+    target->TakeDamage(attackPower);
+}
+
 int Player::SetExp(int exp)
 {
     this->exp = exp;
