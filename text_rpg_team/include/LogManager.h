@@ -4,7 +4,7 @@
 #include <string>
 #include <map>
 
-
+class Character;
 class Player;
 class Monster;
 class Item;
@@ -20,29 +20,24 @@ public:
 	// Start Battle Message
 	void PrintStartBattle(Monster& monster);
 
-	// Player -> Monster attack!
-	void PrintPlayerAttack(Player& player, Monster& monster);
-
-	// Monster -> Player attack!
-	void PrintMonsterAttack(Player& player, Monster& monster);
+	// Attack! arracker -> defender
+	void PrintAttack(Character& attacker, Character& defender);
 
 	// Print PlayerStatus Message
 	void PrintStatus(Player& player);
 
-	// TODO : Print item message
-	void PrintGetItem(Item& item);
-
-	// TODO : Print reward message
+	// Print reward message TODO: Calculate EXP based on monster's level and player's level
 	void PrintReward(Player& player, Monster& monster);
-	/* if reward id in gamemanager */
-	/* void PrintReward(Player& player, int exp, int gold); */
 
-	// TODO : Print item usage message
+	// Print item usage message
 	void PrintUseItem(Item& item);
 
-	// TODO : Add monster kill count
+	// Print item message
+	void PrintGetItem(Item& item);
+
+	// Add monster kill count
 	void AddKill(Monster& monster);
 
-	// TODO : Show monster kill count
+	// Show monster kill count
 	void ShowKillCount();
 };
