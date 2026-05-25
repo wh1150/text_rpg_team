@@ -172,7 +172,8 @@
     <ClCompile Include="src/HealthPotion.cpp" />
     <ClCompile Include="src/Item.cpp" />
     <ClCompile Include="src/LogManager.cpp" />
-    <ClCompile Include="src\Player.cpp"/>
+    <ClCompile Include="src\Player.cpp" />
+    <ClCompile Include="src\UI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Character.h" />
@@ -185,6 +186,7 @@
     <ClInclude Include="include\Item.h" />
     <ClInclude Include="include\LogManager.h" />
     <ClInclude Include="include\Player.h" />
+    <ClInclude Include="include\UI.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

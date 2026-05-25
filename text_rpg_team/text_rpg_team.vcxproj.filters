@@ -14,83 +14,76 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
   </ItemGroup>
-
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-
-    <ClCompile Include="Monster.cpp">
+    <ClCompile Include="src/Character.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-
-    <ClCompile Include="Character.cpp">
+    <ClCompile Include="src/Monster.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-
-    <ClCompile Include="ShadowCatMonster.cpp">
+    <ClCompile Include="src/CrazyChihuahuaMonster.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-
-    <ClCompile Include="CrazyChihuahuaMonster.cpp">
+    <ClCompile Include="src/HellRabbitMonster.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-
-    <ClCompile Include="HellRabbitMonster.cpp">
+    <ClCompile Include="src/ShadowCatMonster.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-
-    <ClCompile Include="src\AttackBoost.cpp">
+    <ClCompile Include="src/AttackBoost.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-
-    <ClCompile Include="src\HealthPotion.cpp">
+    <ClCompile Include="src/HealthPotion.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-
-    <ClCompile Include="src\Item.cpp">
+    <ClCompile Include="src/Item.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-
-    <ClCompile Include="src\LogManager.cpp">
+    <ClCompile Include="src/LogManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
-
   <ItemGroup>
-    <ClInclude Include="Character.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-
-    <ClInclude Include="Monster.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-
-    <ClInclude Include="ShadowCatMonster.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-
-    <ClInclude Include="CrazyChihuahuaMonster.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-
-    <ClInclude Include="HellRabbitMonster.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-
     <ClInclude Include="include\AttackBoost.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-
     <ClInclude Include="include\HealthPotion.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-
     <ClInclude Include="include\Item.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-
     <ClInclude Include="include\LogManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Character.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Monster.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CrazyChihuahuaMonster.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\HellRabbitMonster.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ShadowCatMonster.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\UI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
