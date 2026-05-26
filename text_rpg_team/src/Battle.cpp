@@ -13,6 +13,8 @@ void Battle::StartBattle(Player& player, Monster& monster)
     // 전투 시작 시 아이템 사용 여부 초기화
     isAttackItemUsed = false;
 
+    int addedAttackPower = 0; // 공격력 아이템 증가 수치를 기억할 변수 추가 (전투 종료 후 원상복구용)
+
     // TODO 전투 시작 로그
 
     // 전투 루프 (둘 중 하나가 죽을 때까지)
@@ -24,6 +26,12 @@ void Battle::StartBattle(Player& player, Monster& monster)
         {
             MonsterTurn(player, monster);
         }
+    }
+
+    // 전투 종료 후 아이템으로 올린 공격력 원상복구
+    if (isAttackItemUsed && addedAttackPower > 0)
+    {
+        player.SetAttackPower(player.GetAttackPower() - addedAttackPower);
     }
 
     // 전투 종료 후 승리 시 보상 처리
@@ -38,7 +46,7 @@ void Battle::StartBattle(Player& player, Monster& monster)
     }
 }
 
-void Battle::PlayerTurn(Player& player, Monster& monster)
+void Battle::PlayerTurn(Player& player, Monster& monster, int& addedAttackPower)
 {
 
     // TODO 플레이어 턴 시작 알림
@@ -55,6 +63,7 @@ void Battle::PlayerTurn(Player& player, Monster& monster)
     {
         UseAttackItem(player);
         isAttackItemUsed = true;
+        addedAttackPower = 10;
         // TODO 버프 아이템 사용 결과 로그
     }
 
