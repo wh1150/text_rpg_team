@@ -12,7 +12,7 @@ void Gotoxy(int x, int y);
 
 void DrawBox(int x, int y, int width, int height);
 
-void DrawHellRabbitMonster(int x, int y);
+void DrawMonster(int x, int y, Monster& monster);
 
 void DrawTitle();
 
