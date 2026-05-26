@@ -2,6 +2,7 @@
 
 #pragma once
 #include <string>
+#include <vector>
 #include <map>
 
 class Character;
@@ -23,16 +24,27 @@ class Item;
 class LogManager
 {
 private:
+	static LogManager* instance;
+
 	std::map<std::string, int> killCount;
+
+	std::map<std::string, int>* inventoryPtr = nullptr;
 
 	Player* playerPtr = nullptr;
 
 	Monster* monsterPtr = nullptr;
 public:
+	LogManager() { instance = this; }
+	static LogManager& GetInstance() { return *instance; }
+
+
+
 	// 단순 메시지를 출력합니다.
 	void Print(std::string message);
 
 	void PrintChoice(std::string message);
+
+	void PrintMenu(std::string message);
 
 	// 게임 타이틀을 출력하고 플레이어 이름을 입력받습니다.
 	std::string PrintTitle();
@@ -54,6 +66,13 @@ public:
 	// 중요: 전투 시스템에서 플레이어의 EXP를 먼저 올린 후 호출해주세요.
 	void PrintReward(Player& player, Monster& monster, int gold, std::string itemName="");
 
+
+	void PrintInventory(const std::map<std::string, int>& items);
+
+	// 인벤토리 연결 함수
+	void SetInventory(std::map<std::string, int>& inventory) {
+		inventoryPtr = &inventory;
+	}
 
 	// 하단의 기능들은 아직 구현되지 않았습니다.
 

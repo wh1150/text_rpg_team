@@ -5,6 +5,7 @@
 #include <windows.h>
 #include <chrono>
 #include <vector>
+#include <string>
 
 #include <io.h>
 #include <fcntl.h>
@@ -150,14 +151,21 @@ void DrawLayout()
     DrawBox(0, 8, 62, 20); // 전투 화면
     DrawBox(62, 18, 50, 5); // 메뉴창
 	DrawBox(62, 23, 50, 5); // 로그창
+    DrawBox(62, 10, 50, 8); // 인벤토리창
+    DrawBox(62, 0, 50, 10); // 상점창
 
-    // 메뉴 항목 출력
-    Gotoxy(63, 21);  cout << "1. 공격  2. 아이템  3. 도망(게임종료) ";
+    // 인벤토리 창 제목 출력
+	Gotoxy(63, 10);  cout << "[인벤토리]";
+
+
+	Gotoxy(63, 0);  cout << "[상점]";
 }
 
 
 void DrawLog(string message)
 {
+    Sleep(800);
+
     // 로그 영역 초기화
     Gotoxy(63, 26);
 	cout << "                                      ";
@@ -176,6 +184,21 @@ void DrawChoice(string message)
     // 새 로그 출력
     Gotoxy(63, 19);
     cout << ">> " << message;
+
+}
+
+void DrawMenu(string message)
+{
+    // 로그 영역 초기화
+    Gotoxy(63, 21);
+    cout << "                                      ";
+
+    // 새 로그 출력
+    Gotoxy(63, 21);
+    cout << ">> " << message;
+
+    // 메뉴 항목 출력
+    // Gotoxy(63, 21);  cout << "1. 공격  2. 아이템  3. 도망(게임종료) ";
 }
 
 
@@ -223,4 +246,19 @@ void DrawBattleScene(Player& player, Monster& monster)
 	cout << "## (" << player.GetName() << ")  VS  (" << monster.GetName() << ") ##";
 
 	DrawHellRabbitMonster(6, 12); // TODO: 임시로 지옥토끼 몬스터를 그려놓은 상태입니다. 추후 몬스터 종류에 따라 다른 그림이 나오도록 변경이 필요합니다.
+}
+
+
+void DrawInventory(const std::vector<std::string>& items)
+{
+  // 인벤토리 영역(63, 11)부터 출력 시작
+     for (int i = 0; i < 6; i++) { // 상자 높이에 맞춰 최대 6개 출력
+         Gotoxy(63, 11 + i);
+         cout << "                                              "; // 기존 내용 지우기
+         if (i < items.size())
+         {
+             Gotoxy(63, 11 + i);
+             cout << i + 1 << ". " << items[i];
+         }
+     }
 }
