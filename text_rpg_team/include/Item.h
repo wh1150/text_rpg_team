@@ -3,7 +3,6 @@
 #include <vector>
 
 class Player;
-class LogManager;
 
 enum class ItemType { None, HealthPotion, AttackBoost };
 
@@ -29,8 +28,3 @@ public:
     static bool Use(Player& player, ItemType itemName);
     static bool UseRandom(Player& player);
 };
-
-//Player temp_player(1, 0, 100, 0);
-//temp_player.AddItem(make_unique<HealthPotion>());
-//Item::Use(temp_player, ItemType::HealthPotion);
-//Item::UseRandom(temp_player);
