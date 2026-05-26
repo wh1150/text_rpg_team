@@ -24,23 +24,38 @@ class LogManager
 {
 private:
 	std::map<std::string, int> killCount;
+
+	Player* playerPtr = nullptr;
+
+	Monster* monsterPtr = nullptr;
 public:
 	// 단순 메시지를 출력합니다.
 	void Print(std::string message);
 
+	void PrintChoice(std::string message);
+
+	// 게임 타이틀을 출력하고 플레이어 이름을 입력받습니다.
+	std::string PrintTitle();
+
 	// 전투 시작 시 몬스터 정보를 출력합니다.
-	void PrintStartBattle(Monster& monster);
+	void PrintStartBattle(Player& player, Monster& monster);
 
 	// 공격로그: PrintAttack(공격자, 방어자) 순서로 넣어주세요.
 	// Player, Monster 모두 Character를 상속받으므로 그대로 넣으면 됩니다.
 	void PrintAttack(Character& attacker, Character& defender);
 
+	/*
+	* 현재 사용하지 않아 주석처리 해놓습니다.
 	// 현재 플레이어의 능력치를 출력합니다.
 	void PrintStatus(Player& player);
+	*/
 
 	// 전투 승리 보상을 출력합니다. (EXP 50 고정 출력)
 	// 중요: 전투 시스템에서 플레이어의 EXP를 먼저 올린 후 호출해주세요.
-	void PrintReward(Player& player, Monster& monster);
+	void PrintReward(Player& player, Monster& monster, int gold, std::string itemName="");
+
+
+	// 하단의 기능들은 아직 구현되지 않았습니다.
 
 	// 아이템 사용/획득 로그를 출력합니다.
 	void PrintUseItem(Item& item);
