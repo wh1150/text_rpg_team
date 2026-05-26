@@ -20,7 +20,7 @@ void Battle::StartBattle(Player& player, Monster& monster)
     // 전투 루프 (둘 중 하나가 죽을 때까지)
     while (!IsDead(&player) && !IsDead(&monster))
     {
-        PlayerTurn(player, monster);
+        PlayerTurn(player, monster, addedAttackPower);
 
         if (!IsDead(&monster))
         {
