@@ -1,5 +1,9 @@
 ﻿#include "Battle.h"
 #include "LogManager.h"
+#include "Item.h"
+#include "HealthPotion.h"
+#include "AttackBoost.h"
+#include <memory>
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -52,26 +56,37 @@ void Battle::PlayerTurn(Player& player, Monster& monster, int& addedAttackPower)
     // 체력 30% 이하일 때 포션 자동 사용
     if (player.GetHp() <= player.GetMaxHp() * 0.3f)
     {
-         
-        UsePotion(player); // TODO: 아이템 클래스 구현 완료 시 player.UseItem() 등으로 대체
-        LogManager::GetInstance().Print("위험! 자동 포션을 사용합니다.  ");
+        if (Item::Use(player, ItemType::HealthPotion))
+        {
+            LogManager::GetInstance().Print("위험! 자동 포션을 사용합니다.  ");
+        }
+        else
+        {
+			// TODO : 체력 30% 이하이지만 포션이 없는 경우 경고 메시지 출력
+        }
+        
     }
 
     // 풀피 상태일 때 공격력 증가 아이템 사용 (전투당 1회만)
     if (player.GetHp() == player.GetMaxHp() && !isAttackItemUsed)
     {
-        UseAttackItem(player); // TODO: 아이템 클래스 구현 완료 시 player.UseItem() 등으로 대체 예정
-        isAttackItemUsed = true;
-        addedAttackPower = 10;
-        LogManager::GetInstance().Print("공격력 강화 포션을 사용합니다.  ");
-
+        if (Item::Use(player, ItemType::AttackBoost))
+        {
+            isAttackItemUsed = true;
+            addedAttackPower = 10;
+            LogManager::GetInstance().Print("공격력 강화 포션을 사용합니다.  ");
+        }
+        else
+        {
+            // TODO : 체력 100%이지만 포션이 없는 경우 경고 메시지 출력
+        }
     }
 
     // 플레이어가 몬스터를 공격
     player.Attack(&monster);
     LogManager::GetInstance().PrintAttack(player, monster);
 }
-
+    
 void Battle::MonsterTurn(Player& player, Monster& monster)
 {
     monster.Attack(&player);
@@ -90,11 +105,19 @@ void Battle::GiveReward(Player& player, Monster& monster)
 
     // 아이템 드랍 확률 30% (로직 흐름 유지를 위해 계산만 진행)
     int dropChance = rand() % 100;
-    std::string itemName = ""; // 임의로 추가합니다. 추후 변경해야합니다.
+    std::string itemName = "";
     if (dropChance < 30)
     {
-        // TODO: 아이템 이름을 변수에 담아주세요. 아이템이 있다면 아이템이름을 출력하게 됩니다. 없다면 ""으로 넣어주세요.
-        itemName = "체력 포션";
+        if (rand() % 2 == 0)
+        {
+            itemName = "체력 포션"; 
+            player.AddItem(std::make_unique<HealthPotion>());
+        }
+        else
+        {
+            itemName = "공격력 증가 포션";
+            player.AddItem(std::make_unique<AttackBoost>()); 
+        }
     }
     LogManager::GetInstance().PrintReward(player, monster, rewardGold, itemName);
 }
