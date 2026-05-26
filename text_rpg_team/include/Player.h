@@ -26,4 +26,5 @@ private:
     int exp;
     int maxExp;
     int gold;
+	void LevelUp();
 };

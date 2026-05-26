@@ -80,19 +80,8 @@ void Battle::MonsterTurn(Player& player, Monster& monster)
 void Battle::GiveReward(Player& player, Monster& monster)
 {
     // 경험치 획득
-    int newExp = player.GetExp() + 50;
-
-    player.SetExp(newExp);
-
+    player.SetExp(player.GetExp() + 50);
     cout << "경험치 50 획득!\n";
-
-    // 레벨업 // 전투시스템 체크리스트에 경험치 100이상 흭득 시 레벨업이 있어 만들어둠
-    if (player.GetExp() >= 100)
-    {
-        cout << "레벨 업!\n";
-
-        player.SetExp(0);
-    }
 
     // 골드 획득
     int rewardGold = 10 + rand() % 11;

@@ -41,8 +41,17 @@ int Player::SetExp(int exp)
     this->exp = exp;
     if(exp>= maxExp)
     {
-        level++;
-        exp -= maxExp;
+        this->LevelUp();
 	}
     return this->exp;
+}
+
+void Player::LevelUp() {
+    //TODO 레벨업 로그 작성 필요
+    this->level++;
+    exp -= maxExp;
+    
+    this->maxHp = this->level * 20;
+    this->attackPower = this->level * 5;
+    this->hp = this->maxHp;
 }
