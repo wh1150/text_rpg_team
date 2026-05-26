@@ -6,7 +6,8 @@ Player::Player(int level, int exp, int maxExp, int gold)
     : level(level),
     exp(exp),
     maxExp(maxExp),
-    gold(gold)
+    gold(gold),
+    inventory()
 {
     this->name = name;
     this->hp = 200;
@@ -45,4 +46,15 @@ int Player::SetExp(int exp)
         exp -= maxExp;
 	}
     return this->exp;
+}
+
+const map<string, int>& Player::GetInventory() const
+{
+    return inventory;
+}
+
+
+void Player::SetInventory(const map<string, int>& inventory)
+{
+    this->inventory = inventory;
 }
