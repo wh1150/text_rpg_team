@@ -7,6 +7,6 @@ private:
     int healthRestore;
 
 public:
-    std::string GetName() override;
-    void Use(Player& player) override;
+    HealthPotion();
+    void UseItem(Player& player) override;
 };
