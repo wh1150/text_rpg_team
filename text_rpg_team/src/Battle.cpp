@@ -1,5 +1,4 @@
 ﻿#include "Battle.h"
-
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -14,9 +13,7 @@ void Battle::StartBattle(Player& player, Monster& monster)
     // 전투 시작 시 아이템 사용 여부 초기화
     isAttackItemUsed = false;
 
-    cout << "===== 전투 시작 =====\n";
-    cout << monster.GetName() << " 등장!\n";
-
+    // 전투 루프 (둘 중 하나가 죽을 때까지)
     while (!IsDead(&player) && !IsDead(&monster))
     {
         PlayerTurn(player, monster);
@@ -27,79 +24,52 @@ void Battle::StartBattle(Player& player, Monster& monster)
         }
     }
 
+    // 전투 종료 후 승리 시 보상 처리
     if (!IsDead(&player))
     {
-        cout << "전투 승리!\n";
-
         GiveReward(player, monster);
-    }
-    else
-    {
-        cout << "플레이어 패배...\n";
     }
 }
 
 void Battle::PlayerTurn(Player& player, Monster& monster)
 {
-    cout << "[플레이어 턴]\n";
-
-    // 체력 30% 이하일 때 포션 사용
+    // 체력 30% 이하일 때 포션 자동 사용
     if (player.GetHp() <= player.GetMaxHp() * 0.3f)
     {
         UsePotion(player);
     }
 
-    // 풀피 상태일 때 공격력 증가 아이템 사용 (1회만)
+    // 풀피 상태일 때 공격력 증가 아이템 사용 (전투당 1회만)
     if (player.GetHp() == player.GetMaxHp() && !isAttackItemUsed)
     {
         UseAttackItem(player);
-
         isAttackItemUsed = true;
     }
 
+    // 플레이어가 몬스터를 공격
     player.Attack(&monster);
-
-    cout << monster.GetName()
-        << " HP : "
-        << monster.GetHp()
-        << "\n";
 }
 
 void Battle::MonsterTurn(Player& player, Monster& monster)
 {
-    cout << "[몬스터 턴]\n";
-
+    // 몬스터가 플레이어를 공격
     monster.Attack(&player);
-
-    cout << player.GetName()
-        << " HP : "
-        << player.GetHp()
-        << "\n";
 }
 
 void Battle::GiveReward(Player& player, Monster& monster)
 {
-    // 경험치 획득
+    // 경험치 획득 (고정 50)
     player.SetExp(player.GetExp() + 50);
-    cout << "경험치 50 획득!\n";
 
-    // 골드 획득
+    // 골드 획득 (10 ~ 20 랜덤)
     int rewardGold = 10 + rand() % 11;
-
     player.SetGold(player.GetGold() + rewardGold);
 
-    cout << rewardGold << " Gold 획득!\n";
-
-    // 아이템 드랍 확률 30%
+    // 아이템 드랍 확률 30% (로직 흐름 유지를 위해 계산만 진행)
     int dropChance = rand() % 100;
-
     if (dropChance < 30)
     {
-        cout << "아이템 획득!\n";
-    }
-    else
-    {
-        cout << "아이템 없음\n";
+        // TODO: 향후 아이템 인벤토리 추가 로직이 필요하다면 여기에 작성
     }
 }
 
@@ -111,7 +81,6 @@ bool Battle::IsDead(Character* character)
 void Battle::UsePotion(Player& player)
 {
     int healAmount = 50;
-
     int newHp = player.GetHp() + healAmount;
 
     // 최대 체력 초과 방지
@@ -121,15 +90,10 @@ void Battle::UsePotion(Player& player)
     }
 
     player.SetHP(newHp);
-
-    cout << "포션 사용! HP +50 회복!\n";
 }
 
 void Battle::UseAttackItem(Player& player)
 {
     int newAttackPower = player.GetAttackPower() + 10;
-
     player.SetAttackPower(newAttackPower);
-
-    cout << "공격력 증가 아이템 사용! 공격력 +10 증가!\n";
 }

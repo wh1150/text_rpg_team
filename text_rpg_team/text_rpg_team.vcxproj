@@ -175,7 +175,6 @@
     <ClCompile Include="src\Player.cpp" />
     <ClCompile Include="src\UI.cpp" />
     <ClCompile Include="src\Battle.cpp" />
-    <ClCompile Include="src\Player.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Battle.h" />

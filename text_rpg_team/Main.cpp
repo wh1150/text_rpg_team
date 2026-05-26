@@ -6,7 +6,7 @@
 #include "HellRabbitMonster.h"
 
 using namespace std;
-int main()
+int main() 
 {
 
 	LogManager log;
@@ -41,11 +41,25 @@ int main()
 		if (input == '1')
 		{
 			log.Print("공격을 선택했습니다!");
-			/*
-			* TODO:
-			* 전투 루프 구현
-			* 플레이어가 공격을 하면 몬스터도 플레이어를 공격하도록 구현해주세요.
-			*/
+
+			// 1. 플레이어가 몬스터를 공격
+			player.Attack(&monster);
+			// 2. 몬스터가 피가 0이 아니면 반격
+			if (monster.GetHp() > 0)
+			{
+				monster.Attack(&player);
+				// 3. 플레이어가 사망했는지 확인
+				if (player.GetHp() <= 0)
+				{
+					// TODO 플레이어 사망 처리 (게임 오버)
+					break; // 전투 루프(while) 탈출
+				}
+
+			}
+			else
+			{
+				// TODO 몬스터 사망 처리 (전투 승리)
+			}
 		}
 		else if (input == '2')
 		{
