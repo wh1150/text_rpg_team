@@ -1,9 +1,10 @@
 #pragma once
 
-#include <string>
 #include "Character.h"
-#include <map>
-
+#include "Item.h"
+#include <string>
+#include <vector>
+#include <memory>
 using namespace std; 
 
 class Player : public Character
@@ -20,15 +21,16 @@ public:
     int GetLevel() const { return level; }
     string GetName() const { return name; }
     string SetName(const string& name) { this->name = name; return this->name; }    
-    void SetInventory(const map<string, int>& inventory);
+    void AddItem(unique_ptr<Item> item);
+    void RemoveItem(const string& itemName);
+    const vector<unique_ptr<Item>>& GetInventory() const;
     void Attack(Character* target) override;
-    const map<string, int>& GetInventory() const;
 
 private:
     int level;
     int exp;
     int maxExp;
     int gold;
-    map<string, int> inventory;
+    vector<unique_ptr<Item>> inventory;
 	void LevelUp();
 };
