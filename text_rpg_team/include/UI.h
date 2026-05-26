@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <vector>
 
 
 class Player;
@@ -21,6 +22,10 @@ void DrawLog(std::string message);
 
 void DrawChoice(std::string message);
 
+void DrawMenu(std::string message);
+
 void DrawStatus(Player& player, Monster& monster);
 
 void DrawBattleScene(Player& player, Monster& monster);
+
+void DrawInventory(const std::vector<std::string>& items);
