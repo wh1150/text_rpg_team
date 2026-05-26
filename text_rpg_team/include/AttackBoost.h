@@ -7,6 +7,6 @@ private:
     int attackIncrease;
 
 public:
-    std::string GetName() override;
-    void Use(Player& player) override;
+    AttackBoost();
+    void UseItem(Player& player) override;
 };
