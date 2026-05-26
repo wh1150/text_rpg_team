@@ -52,6 +52,7 @@ int main()
 				if (player.GetHp() <= 0)
 				{
 					// TODO 플레이어 사망 처리 (게임 오버)
+
 					break; // 전투 루프(while) 탈출
 				}
 

@@ -3,7 +3,7 @@
 
 void Shop::OpenShop(Player& player)
 {
-    // UI 및 입력 루프는 UI 담당 파일에서 처리
+	// TODO 상점 입장 로그
 }
 
 bool Shop::BuyPotion(Player& player)
@@ -15,8 +15,12 @@ bool Shop::BuyPotion(Player& player)
     {
         // 골드 차감
         player.SetGold(player.GetGold() - potionPrice);
-        return true; // 구매 성공
+
+		// TODO 포션 구매 성공 로그
+
+        return true; 
     }
+	// TODO 포션 구매 실패 로그
 
     return false; // 골드 부족으로 구매 실패
 }
@@ -30,8 +34,13 @@ bool Shop::BuyAttackItem(Player& player)
     {
         // 골드 차감
         player.SetGold(player.GetGold() - itemPrice);
-        return true; // 구매 성공
+
+		// TODO 공격력 증가 아이템 구매 성공 로그
+
+        return true; 
     }
+
+	// TODO 공격력 증가 아이템 구매 실패 로그
 
     return false; // 골드 부족으로 구매 실패
 }
