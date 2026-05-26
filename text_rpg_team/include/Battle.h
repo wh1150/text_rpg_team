@@ -1,6 +1,26 @@
 ﻿#pragma once
 
-class CLASS {
+#include "Player.h"
+#include "Monster.h"
+
+class Battle
+{
 public:
-	
+    Battle();
+
+    void StartBattle(Player& player, Monster& monster);
+
+private:
+    void PlayerTurn(Player& player, Monster& monster);
+    void MonsterTurn(Player& player, Monster& monster);
+
+    void GiveReward(Player& player, Monster& monster);
+
+    bool IsDead(Character* character);
+
+    void UsePotion(Player& player);
+    void UseAttackItem(Player& player);
+
+private:
+    bool isAttackItemUsed;
 };
