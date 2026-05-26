@@ -18,8 +18,8 @@ private:
 
     bool IsDead(Character* character);
 
-    void UsePotion(Player& player);
-    void UseAttackItem(Player& player);
+    void UsePotion(Player& player); // TODO : 아이템 클래스에서 구현 예정
+    void UseAttackItem(Player& player); // TODO : 아이템 클래스에서 구현 예정
 
 private:
     bool isAttackItemUsed;

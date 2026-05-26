@@ -52,14 +52,15 @@ void Battle::PlayerTurn(Player& player, Monster& monster, int& addedAttackPower)
     // 체력 30% 이하일 때 포션 자동 사용
     if (player.GetHp() <= player.GetMaxHp() * 0.3f)
     {
-        UsePotion(player);
+         
+        UsePotion(player); // TODO: 아이템 클래스 구현 완료 시 player.UseItem() 등으로 대체
         LogManager::GetInstance().Print("위험! 자동 포션을 사용합니다.  ");
     }
 
     // 풀피 상태일 때 공격력 증가 아이템 사용 (전투당 1회만)
     if (player.GetHp() == player.GetMaxHp() && !isAttackItemUsed)
     {
-        UseAttackItem(player);
+        UseAttackItem(player); // TODO: 아이템 클래스 구현 완료 시 player.UseItem() 등으로 대체 예정
         isAttackItemUsed = true;
         addedAttackPower = 10;
         LogManager::GetInstance().Print("공격력 강화 포션을 사용합니다.  ");
@@ -103,28 +104,3 @@ bool Battle::IsDead(Character* character)
     return character->GetHp() <= 0;
 }
 
-void Battle::UsePotion(Player& player)
-{
-    int healAmount = 50;
-    int newHp = player.GetHp() + healAmount;
-
-    // 최대 체력 초과 방지
-    if (newHp > player.GetMaxHp())
-    {
-        newHp = player.GetMaxHp();
-    }
-
-    player.SetHP(newHp);
-
-    LogManager::GetInstance().Print("포션 사용! HP가 50 회복됩니다.       ");
-
-}
-
-void Battle::UseAttackItem(Player& player)
-{
-    int newAttackPower = player.GetAttackPower() + 10;
-    player.SetAttackPower(newAttackPower);
-
-    LogManager::GetInstance().Print("포션 사용! 공격력이 10 증가합니다.      ");
-
-}
