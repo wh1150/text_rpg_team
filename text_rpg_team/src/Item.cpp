@@ -39,11 +39,15 @@ bool Item::Use(Player& player, ItemType itemType)
 
     Item& findItem = *(*it);
 
+	string itemName = findItem.GetName();
+
     findItem.UseItem(player);
 
     LogManager::GetInstance().PrintUseItem(findItem);
 
-    player.RemoveItem(findItem.GetName());
+    player.RemoveItem(itemName);
+
+    LogManager::GetInstance().PrintInventory(player.GetInventory()); // 인벤토리 갱신
 
     return true;
 }

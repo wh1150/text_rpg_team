@@ -1,4 +1,5 @@
-#include "Player.h"
+﻿#include "Player.h"
+#include "LogManager.h"
 
 using namespace std;
 
@@ -48,7 +49,7 @@ int Player::SetExp(int exp)
 }
 
 void Player::LevelUp() {
-    //TODO 레벨업 로그 작성 필요
+	LogManager::GetInstance().Print("레벨업!");
     this->level++;
     exp -= maxExp;
     

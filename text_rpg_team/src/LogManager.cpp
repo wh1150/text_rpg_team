@@ -14,9 +14,9 @@ LogManager* LogManager::instance = nullptr;
 
 void LogManager::Print(std::string message)
 {
-	Gotoxy(63, 26);
-	cout << "											      "; // 이전 로그 지우기
-	Gotoxy(63, 26);
+	Gotoxy(63, 25);
+	cout << "                                           "; // 이전 로그 지우기
+	Gotoxy(63, 25);
 	cout << ">> " << message;
 	Sleep(1000);
 }
@@ -52,7 +52,7 @@ void LogManager::PrintStartBattle(Player& player, Monster& monster)
 
 	DrawLayout(); // 전투 레이아웃 초기화
 	DrawBattleScene(player, monster); // 전투 장면 초기화
-	DrawLog(monster.GetName() + " appeared!"); // 몬스터 등장 메시지
+	DrawLog(monster.GetName() + " 등장!"); // 몬스터 등장 메시지
 
 	DrawStatus(player, monster);
 
@@ -83,10 +83,10 @@ void LogManager::PrintStatus(Player& player)
 
 void LogManager::PrintReward(Player& player, Monster& monster, int gold, std::string itemName)
 {
-	DrawLog("★ Victory! Monster Defeated! ★			");
+	DrawLog("★ 축! 몬스터를 해치웠다!! ★");
 	Sleep(1000);
 
-	DrawLog("Gained " + to_string(gold) + "Gold. (Total: " + to_string(player.GetGold()) + ")");
+	DrawLog("골드 " + to_string(gold) + "획득. (총: " + to_string(player.GetGold()) + ")");
 	Sleep(1000);
 
 	DrawLog("경험치 50획득! 현재: " +to_string(player.GetExp()));
@@ -94,11 +94,11 @@ void LogManager::PrintReward(Player& player, Monster& monster, int gold, std::st
 
 	if(itemName != "")
 	{
-		DrawLog("Luck! You found an item: [" + itemName + "]!");
+		DrawLog("아이템 발견: [" + itemName + "]!");
 	}
 	else
 	{
-		DrawLog("No items found this time.");
+		DrawLog("이번엔 아이템이 안나왔네요..");
 	}
 	DrawStatus(player, monster);
 }
@@ -134,10 +134,6 @@ void LogManager::PrintInventory(const std::vector<std::unique_ptr<Item>>& invent
 }
 
 
-
-//TODO: 하단의 함수들은 모두 출력 형식 변경 필요.PrintUseItem, PrintGetItem...
-
-
 void LogManager::PrintUseItem(Item& item)
 {
 	std::string msg = "아이템 사용: [" + item.GetName() + "]";
@@ -146,7 +142,6 @@ void LogManager::PrintUseItem(Item& item)
 	if (playerPtr != nullptr)
 	{
 		DrawStatus(*playerPtr, *monsterPtr);
-		PrintInventory(playerPtr->GetInventory());
 	}
 	Sleep(1000);
 }
@@ -160,6 +155,7 @@ void LogManager::PrintGetItem(Item& item)
 	{
 		PrintInventory(playerPtr->GetInventory());
 	}
+	Sleep(1000);
 }
 
 
@@ -180,4 +176,10 @@ void LogManager::ShowKillCount()
 			<< "\n";
 	}
 	std::cout << "==============================\n";
+}
+
+
+void LogManager::PrintShop()
+{
+	DrawShop();
 }
