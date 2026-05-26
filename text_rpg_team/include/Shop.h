@@ -2,12 +2,10 @@
 
 #include "Player.h"
 
-class Shop
+class Shop 
 {
 public:
     void OpenShop(Player& player);
-
-private:
-    void BuyPotion(Player& player);
-    void BuyAttackItem(Player& player);
+    bool BuyPotion(Player& player);      
+    bool BuyAttackItem(Player& player);  
 };
