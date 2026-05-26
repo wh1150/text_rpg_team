@@ -79,6 +79,7 @@ void Player::RemoveItem(const string& itemName)
         if ((*iter)->GetName() == itemName)
         {
             inventory.erase(iter);
+            break;
         }
     }
 }
