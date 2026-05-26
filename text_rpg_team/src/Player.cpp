@@ -56,7 +56,6 @@ void Player::LevelUp() {
     this->attackPower = this->level * 5;
     this->hp = this->maxHp;
 }
-}
 
 const map<string, int>& Player::GetInventory() const
 {
