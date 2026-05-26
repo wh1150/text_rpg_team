@@ -7,6 +7,8 @@
 #include "Player.h"
 #include "HellRabbitMonster.h"
 #include "Battle.h"
+#include "HealthPotion.h"
+#include "AttackBoost.h"
 
 using namespace std;
 int main() 
@@ -20,7 +22,15 @@ int main()
 	
 	Player player(1, 0, 100, 0);
 	player.SetName(playerName);
-	HellRabbitMonster monster(player.GetLevel()); // TODO: 임시로 처음 등장 시켜놓은 몬스터입니다. 추후 변경이 필요합니다.
+
+	//TODO: 초기 아이템 설정 (테스트용) 추후 기본 소지 아이템을 설정할 때 변경이 필요합니다.
+	//TODO: 아이템 클래스를 상속받은 자식 클래스들의 구현이 완료되어야 합니다.
+	//player.AddItem(make_unique<HealthPotion>());
+	//player.AddItem(make_unique<HealthPotion>());
+	//player.AddItem(make_unique<AttackBoost>());
+
+	// TODO: 임시로 처음 등장 시켜놓은 몬스터입니다. 추후 변경이 필요합니다.
+	HellRabbitMonster monster(player.GetLevel());
 	// std::map<std::string, int> inventory = { {"체력 포션", 3}, {"힘 포션", 3} };
 	/*
 	* 로그 출력 가이드:
@@ -33,7 +43,7 @@ int main()
 	// log.PrintStatus(player);
 	log.PrintStartBattle(player, monster);
 	log.PrintMenu("1. 공격  2. 상점  3. 도망 ");
-	// log.PrintInventory(inventory);// 인벤토리 출력입니다. 임시로 출력해놓은 포션을 볼 수 있습니다. 변경 시 이 부분도 변경해야합니다.
+	log.PrintInventory(player.GetInventory());
 
 
 	// 전투 루프 (선택지 입력 대기)

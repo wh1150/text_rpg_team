@@ -63,11 +63,10 @@ public:
 	*/
 
 	// 전투 승리 보상을 출력합니다. (EXP 50 고정 출력)
-	// 중요: 전투 시스템에서 플레이어의 EXP를 먼저 올린 후 호출해주세요.
 	void PrintReward(Player& player, Monster& monster, int gold, std::string itemName="");
 
 
-	void PrintInventory(const std::map<std::string, int>& items);
+	void PrintInventory(const std::vector<std::unique_ptr<Item>>& inventory);
 
 	// 인벤토리 연결 함수
 	void SetInventory(std::map<std::string, int>& inventory) {
