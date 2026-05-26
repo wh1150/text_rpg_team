@@ -57,13 +57,29 @@ void Player::LevelUp() {
     this->hp = this->maxHp;
 }
 
-const map<string, int>& Player::GetInventory() const
+const vector<unique_ptr<Item>>& Player::GetInventory() const
 {
     return inventory;
 }
 
-
-void Player::SetInventory(const map<string, int>& inventory)
+void Player::AddItem(unique_ptr<Item> item)
 {
-    this->inventory = inventory;
+    if (item == nullptr)
+    {
+        return;
+    }
+
+    inventory.push_back(move(item));
+}
+
+void Player::RemoveItem(const string& itemName)
+{
+    for (auto iter = inventory.begin(); iter != inventory.end(); ++iter)
+    {
+        if ((*iter)->GetName() == itemName)
+        {
+            inventory.erase(iter);
+            break;
+        }
+    }
 }
