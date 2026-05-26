@@ -30,4 +30,5 @@ private:
     int maxExp;
     int gold;
     map<string, int> inventory;
+	void LevelUp();
 };

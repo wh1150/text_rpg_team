@@ -1,4 +1,4 @@
-// LogManager.cpp
+ï»¿// LogManager.cpp
 
 #include <iostream>
 #include <Windows.h>
@@ -13,38 +13,38 @@
 void LogManager::Print(std::string message)
 {
 	Gotoxy(63, 26);
-	cout << "                                      "; // ÀÌÀü ·Î±× Áö¿ì±â
+	cout << "                                      "; // ì´ì „ ë¡œê·¸ ì§€ìš°ê¸°
 	Gotoxy(63, 26);
 	cout << ">> " << message;
 }
 
 void LogManager::PrintChoice(std::string message)
 {
-	DrawChoice(message); // std::cout ´ë½Å DrawLog() »ç¿ë.
+	DrawChoice(message); // std::cout ëŒ€ì‹  DrawLog() ì‚¬ìš©.
 }
 
 string LogManager::PrintTitle()
 {
-	DrawTitle(); // °ÔÀÓ Å¸ÀÌÆ² Ãâ·Â
+	DrawTitle(); // ê²Œì„ íƒ€ì´í‹€ ì¶œë ¥
 
 	int boxY = 20;
 	Gotoxy(12, boxY + 1);
-	cout << "¿ë»çÀÇ ÀÌ¸§À» ÀÔ·ÂÇÏ½Ã¿À: ";
+	cout << "ìš©ì‚¬ì˜ ì´ë¦„ì„ ì…ë ¥í•˜ì‹œì˜¤: ";
 
 	string playerName;
 	cin >> playerName;
 
-	return playerName; // ÀÌ¸§ ¹İÈ¯
+	return playerName; // ì´ë¦„ ë°˜í™˜
 }
 
 void LogManager::PrintStartBattle(Player& player, Monster& monster)
 {
-	playerPtr = &player; // ÇÃ·¹ÀÌ¾î Á¤º¸ ÀúÀå (HP °»½ÅÀ» À§ÇØ)
-	monsterPtr = &monster; // ¸ó½ºÅÍ Á¤º¸ ÀúÀå (HP °»½ÅÀ» À§ÇØ)
+	playerPtr = &player; // í”Œë ˆì´ì–´ ì •ë³´ ì €ì¥ (HP ê°±ì‹ ì„ ìœ„í•´)
+	monsterPtr = &monster; // ëª¬ìŠ¤í„° ì •ë³´ ì €ì¥ (HP ê°±ì‹ ì„ ìœ„í•´)
 
-	DrawLayout(); // ÀüÅõ ·¹ÀÌ¾Æ¿ô ÃÊ±âÈ­
-	DrawBattleScene(player, monster); // ÀüÅõ Àå¸é ÃÊ±âÈ­
-	DrawLog(monster.GetName() + " appeared!"); // ¸ó½ºÅÍ µîÀå ¸Ş½ÃÁö
+	DrawLayout(); // ì „íˆ¬ ë ˆì´ì•„ì›ƒ ì´ˆê¸°í™”
+	DrawBattleScene(player, monster); // ì „íˆ¬ ì¥ë©´ ì´ˆê¸°í™”
+	DrawLog(monster.GetName() + " appeared!"); // ëª¬ìŠ¤í„° ë“±ì¥ ë©”ì‹œì§€
 
 	DrawStatus(player, monster);
 
@@ -71,7 +71,7 @@ void LogManager::PrintStatus(Player& player)
 
 void LogManager::PrintReward(Player& player, Monster& monster, int gold, std::string itemName)
 {
-	DrawLog("¡Ú Victory! Monster Defeated! ¡Ú");
+	DrawLog("â˜… Victory! Monster Defeated! â˜…");
 	Sleep(500);
 
 	DrawLog("Gained " + to_string(gold) + "Gold. (Total: " + to_string(player.GetGold()) + ")");
@@ -87,7 +87,7 @@ void LogManager::PrintReward(Player& player, Monster& monster, int gold, std::st
 	}
 }
 
-//TODO: ÇÏ´ÜÀÇ ÇÔ¼öµéÀº ¸ğµÎ Ãâ·Â Çü½Ä º¯°æ ÇÊ¿ä.PrintUseItem, PrintGetItem...
+//TODO: í•˜ë‹¨ì˜ í•¨ìˆ˜ë“¤ì€ ëª¨ë‘ ì¶œë ¥ í˜•ì‹ ë³€ê²½ í•„ìš”.PrintUseItem, PrintGetItem...
 
 
 void LogManager::PrintUseItem(Item& item)
