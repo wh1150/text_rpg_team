@@ -3,6 +3,7 @@
 #include <iostream>
 #include <Windows.h>
 #include <string>
+#include <map>
 #include "LogManager.h"
 #include "Player.h"
 #include "Monster.h"
@@ -13,11 +14,11 @@ LogManager* LogManager::instance = nullptr;
 
 void LogManager::Print(std::string message)
 {
-	Sleep(1000);
 	Gotoxy(63, 26);
 	cout << "											      "; // 이전 로그 지우기
 	Gotoxy(63, 26);
 	cout << ">> " << message;
+	Sleep(1000);
 }
 
 void LogManager::PrintChoice(std::string message)
@@ -54,6 +55,8 @@ void LogManager::PrintStartBattle(Player& player, Monster& monster)
 	DrawLog(monster.GetName() + " appeared!"); // 몬스터 등장 메시지
 
 	DrawStatus(player, monster);
+
+	PrintInventory(player.GetInventory());
 
 
 }
@@ -101,9 +104,33 @@ void LogManager::PrintReward(Player& player, Monster& monster, int gold, std::st
 }
 
 
-void LogManager::PrintInventory(const std::map<std::string, int>& items)
+void LogManager::PrintInventory(const std::vector<std::unique_ptr<Item>>& inventory)
 {
-	//TODO
+	// 아이템 이름과 개수를 세기 위한 맵
+	// 아이템 이름을 키로, 개수를 값으로 저장합니다.
+	std::map<std::string, int> itemCount;
+
+	// 인벤토리를 순회하면서 아이템 이름과 개수를 세고 맵에 저장합니다.
+	for (const auto& item : inventory)
+	{
+		if (item != nullptr)
+		{
+			itemCount[item->GetName()]++;
+		}
+	}
+
+	// 출력용 문자열 리스트
+	std::vector<std::string> itemList;
+
+	// 맵을 순회해서 아이템 정보 확인합니다.
+	for (const auto& pair : itemCount)
+	{
+		// pair.first는 아이템 이름, pair.second는 개수입니다.
+		itemList.push_back(pair.first + " x" + std::to_string(pair.second));
+	}
+
+	// 화면에 출력합니다.
+	DrawInventory(itemList);
 }
 
 
@@ -115,7 +142,12 @@ void LogManager::PrintUseItem(Item& item)
 {
 	std::string msg = "아이템 사용: [" + item.GetName() + "]";
 	DrawLog(msg);
-	DrawStatus(*playerPtr, *monsterPtr);
+
+	if (playerPtr != nullptr)
+	{
+		DrawStatus(*playerPtr, *monsterPtr);
+		PrintInventory(playerPtr->GetInventory());
+	}
 	Sleep(1000);
 }
 
@@ -123,6 +155,11 @@ void LogManager::PrintGetItem(Item& item)
 {
 	std::string msg = "아이템 획득: [" + item.GetName() + "]";
 	DrawLog(msg);
+
+	if(playerPtr != nullptr)
+	{
+		PrintInventory(playerPtr->GetInventory());
+	}
 }
 
 

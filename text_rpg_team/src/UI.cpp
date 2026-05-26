@@ -164,7 +164,6 @@ void DrawLayout()
 
 void DrawLog(string message)
 {
-    Sleep(800);
 
     // 로그 영역 초기화
     Gotoxy(63, 26);
@@ -173,6 +172,8 @@ void DrawLog(string message)
     // 새 로그 출력
 	Gotoxy(63, 26);
 	cout << ">> " << message;
+
+    Sleep(800);
 }
 
 void DrawChoice(string message)
@@ -259,6 +260,11 @@ void DrawInventory(const std::vector<std::string>& items)
          {
              Gotoxy(63, 11 + i);
              cout << i + 1 << ". " << items[i];
+         }
+         else if (i == 0 && items.empty())
+         {
+             Gotoxy(63, 11);
+			 cout << "인벤토리가 비어있습니다.";
          }
      }
 }
