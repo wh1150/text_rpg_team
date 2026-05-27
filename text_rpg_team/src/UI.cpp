@@ -345,7 +345,7 @@ void DrawInventory(const std::vector<std::string>& items)
          }
          else if (i == 0 && items.empty())
          {
-             Gotoxy(63, 11);
+             Gotoxy(63, 12);
 			 cout << BLUE << "인벤토리가 비어있습니다." << RESET;
          }
      }
