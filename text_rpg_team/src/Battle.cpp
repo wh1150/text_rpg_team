@@ -62,7 +62,6 @@ void Battle::PlayerTurn(Player& player, Monster& monster, int& addedAttackPower)
         }
         else
         {
-			// TODO : 체력 30% 이하이지만 포션이 없는 경우 경고 메시지 출력
 			LogManager::GetInstance().Print("체력이 낮지만 포션이 없습니다...");
         }
         
@@ -79,7 +78,6 @@ void Battle::PlayerTurn(Player& player, Monster& monster, int& addedAttackPower)
         }
         else
         {
-            // TODO : 체력 100%이지만 포션이 없는 경우 경고 메시지 출력
 			LogManager::GetInstance().Print("풀피이지만 공격력 증가 포션이 없습니다...");
         }
     }
