@@ -14,6 +14,11 @@
 #include "AttackBoost.h"
 #include "Shop.h"
 
+#define RED "\033[31m"
+#define GREEN "\033[32m"
+#define YELLOW "\033[33m"
+#define BLUE "\033[34m"
+#define RESET "\033[0m"
 
 Monster* CreateRandomMonster(int playerLevel)
 {
@@ -80,7 +85,7 @@ int main()
 
 		// 전투 시작
 		log.PrintStartBattle(player, *monster);
-		log.Print(monster->GetName() + "이(가) 나타났다!");
+		log.Print(YELLOW + monster->GetName() + RESET + "이(가) 나타났다!");
 		//log.PrintMenu("1. 공격  2. 상점  3. 도망 ");
 		log.PrintInventory(player.GetInventory());
 		log.PrintShop();
@@ -93,7 +98,7 @@ int main()
 
 			while (input == 0)
 			{
-				log.PrintMenu("1. 공격  2. 상점  3. 도망 ");
+				log.PrintMenu(RED "1. 공격  " YELLOW "2. 상점  " GREEN "3. 도망 " RESET);
 				log.PrintChoice("어떻게 할까? ");
 
 				log.PrintStartBattle(player, *monster); // 몬스터 애니메이션 갱신
@@ -118,25 +123,25 @@ int main()
 			else if (input == '2')
 			{
 				LogManager::GetInstance().PlaySelectSound();
-				log.Print("상점에 입장했습니다.");
+				log.Print(GREEN "상점에 입장했습니다." RESET);
 				shop.OpenShop(player);
 			}
 			else if (input == '3')	
 			{
 				LogManager::GetInstance().PlaySelectSound();
-				log.Print("도망쳤습니다! 용사는 나약합니다.");
+				log.Print(RED "도망쳤습니다! 용사는 나약합니다." RESET);
 				isGameOver = true;
 				break;
 			}
 			else
 			{
 				LogManager::GetInstance().PlayFalseSound();
-				log.Print("잘못된 입력입니다. 다시 선택해주세요.");
+				log.Print(YELLOW "잘못된 입력입니다. 다시 선택해주세요." RESET);
 			}
 		}
 		if (monster->GetHp() <= 0)
 		{
-			log.Print("다음 몬스터가 등장합니다.");
+			log.Print(GREEN "다음 몬스터가 등장합니다." RESET);
 		}
 		delete monster;
 		monster = nullptr;

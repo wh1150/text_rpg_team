@@ -8,6 +8,13 @@
 #include <cstdlib>
 #include <ctime>
 
+#define RED "\033[31m"
+#define GREEN "\033[32m"
+#define YELLOW "\033[33m"
+#define BLUE "\033[34m"
+#define RESET "\033[0m"
+
+
 Battle::Battle()
     : isAttackItemUsed(false)
 {
@@ -20,7 +27,7 @@ void Battle::StartBattle(Player& player, Monster& monster)
 
     int addedAttackPower = 0; // 공격력 아이템 증가 수치를 기억할 변수 추가 (전투 종료 후 원상복구용)
 
-    LogManager::GetInstance().Print("전투를 시작합니다!                 ");
+    LogManager::GetInstance().Print(RED "전투를 시작합니다!" RESET);
 
     // 전투 루프 (둘 중 하나가 죽을 때까지)
     while (!IsDead(&player) && !IsDead(&monster))
@@ -43,11 +50,11 @@ void Battle::StartBattle(Player& player, Monster& monster)
     if (!IsDead(&player))
     {
         GiveReward(player, monster);
-        LogManager::GetInstance().Print("전투 승리!                 ");
+        LogManager::GetInstance().Print(GREEN "전투 승리!" RESET);
     }
     else
     {
-        LogManager::GetInstance().Print("전투 패배! 플레이어는 나약합니다.    ");
+        LogManager::GetInstance().Print(RED "전투 패배! 플레이어는 나약합니다.    " RESET);
     }
 }
 
@@ -58,7 +65,7 @@ void Battle::PlayerTurn(Player& player, Monster& monster, int& addedAttackPower)
     {
         if (Item::Use(player, ItemType::HealthPotion))
         {
-            LogManager::GetInstance().Print("위험! 자동 포션을 사용합니다.  ");
+            LogManager::GetInstance().Print(RED "위험!" GREEN "자동 포션을 사용합니다." RESET);
         }
         else
         {
@@ -74,7 +81,7 @@ void Battle::PlayerTurn(Player& player, Monster& monster, int& addedAttackPower)
         {
             isAttackItemUsed = true;
             addedAttackPower = 10;
-            LogManager::GetInstance().Print("공격력 강화 포션을 사용합니다.  ");
+            LogManager::GetInstance().Print(GREEN "공격력 강화 포션을 사용합니다." RESET);
         }
         else
         {

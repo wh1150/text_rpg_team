@@ -9,6 +9,13 @@
 
 #include <io.h>
 #include <fcntl.h>
+
+
+#define RED "\033[31m"
+#define GREEN "\033[32m"
+#define YELLOW "\033[33m"
+#define BLUE "\033[34m"
+#define RESET "\033[0m"
 using namespace std;
 
 
@@ -204,10 +211,10 @@ void DrawLayout()
     DrawBox(62, 0, 52, 10); // 상점창
 
     // 인벤토리 창 제목 출력
-	Gotoxy(63, 11);  cout << "[인벤토리]";
+	Gotoxy(63, 11);  cout << YELLOW << "[인벤토리]" << RESET;
 
 
-	Gotoxy(63, 1);  cout << "[상점]";
+	Gotoxy(63, 1);  cout << YELLOW << "[상점]" << RESET;
 }
 
 
@@ -273,36 +280,36 @@ void DrawStatus(Player& player, Monster& monster)
 {
     // 플레이어 이름 위치
     Gotoxy(2, 1);
-    cout << "[" << player.GetName() << "]";
+    cout << YELLOW << "[" << player.GetName() << "]" << RESET;
 
     //플레이어 레벨 위치
 	Gotoxy(2, 2);
-	cout << "Level: " << player.GetLevel() << "         ";
+	cout <<"Level: " << player.GetLevel() << "         ";
 
 	// 플레이어 경험치 및 골드 위치
     Gotoxy(2, 3);
-    cout << "Exp: " << player.GetExp() << "/100" << "  Gold: " << player.GetGold() << "   ";
+    cout << GREEN << "Exp: " << RESET << player.GetExp() << "/100" << YELLOW << "  Gold: " << RESET << player.GetGold() << "   ";
 
     // 플레이어 HP 위치
     Gotoxy(2, 4);
-	cout << "HP: " << player.GetHp() << "/" << player.GetMaxHp() << "         ";
+	cout << RED << "HP: " << RESET << player.GetHp() << "/" << player.GetMaxHp() << "         ";
 
 	// 플레이어 공격력 위치
     Gotoxy(2, 5);
-	cout << "ATK: " << player.GetAttackPower() << "         ";
+	cout << BLUE << "ATK: " << RESET << player.GetAttackPower() << "         ";
 
 
 	// 몬스터 이름 위치
 	Gotoxy(33, 1);
-	cout << "[" <<  monster.GetName() << "]";
+	cout << YELLOW << "[" <<  monster.GetName() << "]" << RESET;
 
 	// 몬스터 HP 위치
 	Gotoxy(33, 2);
-    cout << "HP: " << monster.GetHp() << "/" << monster.GetMaxHp() << "         ";
+    cout << RED << "HP: " << RESET << monster.GetHp() << "/" << monster.GetMaxHp() << "         ";
 
 	// 몬스터 공격력 위치
 	Gotoxy(33, 3);
-    cout << "ATK: " << monster.GetAttackPower() << "         ";
+    cout << BLUE << "ATK: "<< RESET << monster.GetAttackPower() << "         ";
 
 }
 
@@ -313,7 +320,7 @@ void DrawBattleScene(Player& player, Monster& monster)
     static int dir = 1;
 
     Gotoxy(2, 9);
-	cout << "## (" << player.GetName() << ")  VS  (" << monster.GetName() << ") ##";
+	cout << YELLOW << "##" << RESET << " [" << player.GetName() << "]" << RED << "  VS  " << RESET << "[" << monster.GetName() << "] " << YELLOW << "##" << RESET;
 
     ClearMonsterArea(4, 12, 56, 13);
 	DrawMonster(6 + offset, 12, monster);
@@ -334,12 +341,12 @@ void DrawInventory(const std::vector<std::string>& items)
          if (i < items.size())
          {
              Gotoxy(63, 12 + i);
-             cout << i + 1 << ". " << items[i];
+             cout << GREEN << i + 1 << ". " << items[i] << RESET;
          }
          else if (i == 0 && items.empty())
          {
              Gotoxy(63, 11);
-			 cout << "인벤토리가 비어있습니다.";
+			 cout << BLUE << "인벤토리가 비어있습니다." << RESET;
          }
      }
 }
@@ -347,10 +354,10 @@ void DrawInventory(const std::vector<std::string>& items)
 void DrawShop()
 {
     Gotoxy(63, 3);
-	cout << "[ 체력 포션 ] (10 Gold)";
+	cout << GREEN<< "[ 체력 포션 ]" << RESET << " (10 Gold)";
 
 	Gotoxy(63, 6);
-	cout << "[ 공격력 증가 포션 ] (30 Gold)";
+    cout << GREEN << "[ 공격력 증가 포션 ]" << RESET << " (30 Gold)";
 }
 
 void ClearMonsterArea(int x, int y, int width, int height)

@@ -11,6 +11,12 @@
 #include "Item.h"
 #include "UI.h"
 
+#define RED "\033[31m"
+#define GREEN "\033[32m"
+#define YELLOW "\033[33m"
+#define BLUE "\033[34m"
+#define RESET "\033[0m"
+
 LogManager* LogManager::instance = nullptr;
 
 void LogManager::PlayLightAttackSound()
@@ -122,7 +128,7 @@ void LogManager::PrintStartBattle(Player& player, Monster& monster)
 void LogManager::PrintAttack(Character& attacker, Character& defender)
 {
 	PlayLightAttackSound();
-	DrawLog(attacker.GetName() + "이/가 " + defender.GetName() + "을/를 공격!");
+	DrawLog(RED + attacker.GetName() + RESET + "이/가 " + BLUE + defender.GetName() + RESET + "을/를 공격!");
 
 	if(playerPtr != nullptr && monsterPtr != nullptr)
 	{
@@ -141,18 +147,18 @@ void LogManager::PrintStatus(Player& player)
 
 void LogManager::PrintReward(Player& player, Monster& monster, int gold, std::string itemName)
 {
-	DrawLog("★ 축! 몬스터를 해치웠다!! ★");
+	DrawLog(YELLOW "★ 축! 몬스터를 해치웠다!! ★" RESET);
 	Sleep(1000);
 
-	DrawLog("골드 " + to_string(gold) + "획득. (총: " + to_string(player.GetGold()) + ")");
+	DrawLog(YELLOW "골드 " RESET + to_string(gold) + "획득. (총: " + to_string(player.GetGold()) + ")");
 	Sleep(1000);
 
-	DrawLog("경험치 50획득! 현재: " +to_string(player.GetExp()));
+	DrawLog(GREEN "경험치 50획득!" RESET " 현재: " +to_string(player.GetExp()));
 	Sleep(1000);
 
 	if(itemName != "")
 	{
-		DrawLog("아이템 발견: [" + itemName + "]!");
+		DrawLog(GREEN "아이템 발견: " RESET "[" + itemName + "]!");
 		Sleep(1000);
 	}
 	else
@@ -196,7 +202,7 @@ void LogManager::PrintInventory(const std::vector<std::unique_ptr<Item>>& invent
 
 void LogManager::PrintUseItem(Item& item)
 {
-	std::string msg = "아이템 사용: [" + item.GetName() + "]";
+	std::string msg = GREEN "아이템 사용:" RESET " [" + item.GetName() + "]";
 	DrawLog(msg);
 
 	if (playerPtr != nullptr)
@@ -208,7 +214,7 @@ void LogManager::PrintUseItem(Item& item)
 
 void LogManager::PrintGetItem(Item& item)
 {
-	std::string msg = "아이템 획득: [" + item.GetName() + "]";
+	std::string msg = GREEN "아이템 획득:" RESET " [" + item.GetName() + "]";
 	DrawLog(msg);
 
 	if(playerPtr != nullptr)

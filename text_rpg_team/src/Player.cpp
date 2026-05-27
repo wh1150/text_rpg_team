@@ -1,6 +1,9 @@
 ﻿#include "Player.h"
 #include "LogManager.h"
 
+#define YELLOW "\033[33m"
+#define RESET "\033[0m"
+
 using namespace std;
 
 Player::Player(int level, int exp, int maxExp, int gold)
@@ -49,7 +52,7 @@ int Player::SetExp(int exp)
 }
 
 void Player::LevelUp() {
-	LogManager::GetInstance().Print("레벨업!");
+	LogManager::GetInstance().Print(YELLOW "★ 레벨업! ★" RESET);
     this->level++;
     exp -= maxExp;
     
