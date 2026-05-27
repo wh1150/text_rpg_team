@@ -62,7 +62,7 @@ int main()
 		while (_kbhit())
 		{
 			_getch();
-		}
+		}	
 
 		Monster* monster = CreateRandomMonster(player.GetLevel());
 
