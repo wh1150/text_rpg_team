@@ -4,8 +4,34 @@
 
 void Shop::OpenShop(Player& player)
 {
-    LogManager::GetInstance().PrintChoice("[상점] 무엇을 구매하시겠습니까?");
-	LogManager::GetInstance().PrintMenu("1. 체력 포션  2. 공격력 증가 아이템  3. 나가기");
+	int choice;
+
+    while (true)
+    {
+        LogManager::GetInstance().PrintChoice("[상점] 무엇을 구매하시겠습니까?");
+	    LogManager::GetInstance().PrintMenu("1. 체력 포션  2. 공격력 증가 아이템  3. 나가기");
+
+        cin >> choice;
+
+        switch (choice)
+        {
+        case 1:
+            BuyPotion(player);
+            break;
+
+        case 2:
+            BuyAttackItem(player);
+            break;
+
+        case 3:
+			// TODO : 상점에서 나가기
+            return;
+
+        default:
+			// TODO : 잘못된 입력 처리
+            break;
+        }
+    }
 }
 
 bool Shop::BuyPotion(Player& player)
