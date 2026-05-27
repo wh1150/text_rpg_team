@@ -1,7 +1,11 @@
 ﻿#include "Shop.h"
 #include "LogManager.h"
+#include "Item.h"
+#include "HealthPotion.h"
+#include "AttackBoost.h"
 #include <iostream>
 #include <conio.h>
+#include <memory>
 
 void Shop::OpenShop(Player& player)
 {
@@ -45,6 +49,8 @@ bool Shop::BuyPotion(Player& player)
         // 골드 차감
         player.SetGold(player.GetGold() - potionPrice);
 
+        player.AddItem(std::make_unique<HealthPotion>());
+
 		LogManager::GetInstance().Print("체력 포션을 구매했습니다!");
         LogManager::GetInstance().PrintInventory(player.GetInventory());
         LogManager::GetInstance().PrintStatus();
@@ -59,12 +65,14 @@ bool Shop::BuyPotion(Player& player)
 bool Shop::BuyAttackItem(Player& player)
 {
     int itemPrice = 30;
-
+        
     // 골드가 충분한지 확인
     if (player.GetGold() >= itemPrice)
     {
         // 골드 차감
         player.SetGold(player.GetGold() - itemPrice);
+
+        player.AddItem(std::make_unique<AttackBoost>());
 
 		LogManager::GetInstance().Print("공격력 증가 포션을 구매했습니다!");
         LogManager::GetInstance().PrintInventory(player.GetInventory());
