@@ -1,29 +1,30 @@
 ﻿#include "Shop.h"
 #include "LogManager.h"
 #include <iostream>
+#include <conio.h>
 
 void Shop::OpenShop(Player& player)
 {
-	int choice;
+    char choice;
 
     while (true)
     {
+        LogManager::GetInstance().PrintMenu("1. 체력 포션  2. 공격력 증가 아이템  3. 나가기");
         LogManager::GetInstance().PrintChoice("[상점] 무엇을 구매하시겠습니까?");
-	    LogManager::GetInstance().PrintMenu("1. 체력 포션  2. 공격력 증가 아이템  3. 나가기");
-
-        cin >> choice;
+	    
+        choice = _getch();
 
         switch (choice)
         {
-        case 1:
+        case '1':
             BuyPotion(player);
             break;
 
-        case 2:
+        case '2':
             BuyAttackItem(player);
             break;
 
-        case 3:
+        case '3':
 			// TODO : 상점에서 나가기
             return;
 
