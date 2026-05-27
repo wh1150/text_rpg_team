@@ -13,6 +13,25 @@
 
 LogManager* LogManager::instance = nullptr;
 
+void LogManager::PlayLightAttackSound()
+{
+	Beep(800, 30);
+	Beep(450, 35);
+}
+
+
+void LogManager::PlaySelectSound()
+{
+	Beep(1000, 30);
+	Beep(300, 35);
+}
+
+void LogManager::PlayFalseSound()
+{
+	Beep(100, 30);
+	Beep(200, 25);
+}
+
 void LogManager::Print(std::string message)
 {
 	DrawLog(message);
@@ -102,6 +121,7 @@ void LogManager::PrintStartBattle(Player& player, Monster& monster)
 
 void LogManager::PrintAttack(Character& attacker, Character& defender)
 {
+	PlayLightAttackSound();
 	DrawLog(attacker.GetName() + "이/가 " + defender.GetName() + "을/를 공격!");
 
 	if(playerPtr != nullptr && monsterPtr != nullptr)
