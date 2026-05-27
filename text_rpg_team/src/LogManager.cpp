@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <Windows.h>
+#include <conio.h>
 #include <string>
 #include <map>
 #include "LogManager.h"
@@ -14,11 +15,7 @@ LogManager* LogManager::instance = nullptr;
 
 void LogManager::Print(std::string message)
 {
-	Gotoxy(63, 25);
-	cout << "                                           "; // 이전 로그 지우기
-	Gotoxy(63, 25);
-	cout << ">> " << message;
-	Sleep(1000);
+	DrawLog(message);
 }
 
 void LogManager::PrintChoice(std::string message)
@@ -33,16 +30,47 @@ void LogManager::PrintMenu(std::string message)
 
 string LogManager::PrintTitle()
 {
-	DrawTitle(); // 게임 타이틀 출력
+	DrawTitle();
 
 	int boxY = 20;
-	Gotoxy(12, boxY + 1);
-	cout << "용사의 이름을 입력하시오: ";
 
+	string enterName = "용사의 이름을 입력하시오: ";
+	string nameLimit = "영문/숫자 입력은 최대 10자, 한글입력은 최대 6자 입니다.";
 	string playerName;
-	cin >> playerName;
 
-	return playerName; // 이름 반환
+	Gotoxy(12, boxY + 3);
+	cout << nameLimit;
+
+	Gotoxy(12, boxY + 1);
+	cout << enterName;
+
+	while (true)
+	{
+		char ch = _getch();
+
+		// 엔터
+		if (ch == '\r')
+		{
+			if (!playerName.empty())
+				break;
+		}
+		// 백스페이스
+		else if (ch == '\b')
+		{
+			if (!playerName.empty())
+			{
+				playerName.pop_back();
+				cout << "\b \b";
+			}
+		}
+		// 최대 글자 수 제한 (영어기준 10자. 한글기준 6자 가능)
+		else if (playerName.size() < 10)
+		{
+			playerName += ch;
+			cout << ch;
+		}
+	}
+	return playerName;
 }
 
 void LogManager::PrintStartBattle(Player& player, Monster& monster)
