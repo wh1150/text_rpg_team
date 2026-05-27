@@ -106,7 +106,7 @@ void DrawMonster(int x, int y, Monster& monster)
 
 
 	// 유니코드 출력을 위해 콘솔 모드를 UTF-16으로 변경
-    _setmode(_fileno(stdout), _O_U16TEXT);
+    (void)_setmode(_fileno(stdout), _O_U16TEXT);
 
     for (int i = 0; i < selectedMonster.size(); i++)
     {
@@ -114,7 +114,7 @@ void DrawMonster(int x, int y, Monster& monster)
         wcout << selectedMonster[i];
     }
 	// 출력 후 콘솔 모드를 다시 일반 텍스트로 변경
-    _setmode(_fileno(stdout), _O_TEXT);
+    (void)_setmode(_fileno(stdout), _O_TEXT);
 }
 
 
@@ -181,7 +181,7 @@ void DrawTitle()
     }
 
     // 플레이어 이름 입력 박스
-    int boxY = titleLine1.size() + 2 + titleLine2.size() + 2;
+    int boxY = static_cast<int>(titleLine1.size() + 2 + titleLine2.size() + 2);
     DrawBox(10, boxY, 60, 5);
 
 }
