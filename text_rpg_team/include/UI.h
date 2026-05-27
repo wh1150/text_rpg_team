@@ -31,3 +31,5 @@ void DrawBattleScene(Player& player, Monster& monster);
 void DrawInventory(const std::vector<std::string>& items);
 
 void DrawShop();
+
+void ClearMonsterArea(int x, int y, int width, int height);

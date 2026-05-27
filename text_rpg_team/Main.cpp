@@ -34,11 +34,23 @@ Monster* CreateRandomMonster(int playerLevel)
 	return nullptr;
 }
 
+void HideCursor()
+{
+	HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+
+	CONSOLE_CURSOR_INFO cursorInfo;
+
+	GetConsoleCursorInfo(consoleHandle, &cursorInfo);
+
+	cursorInfo.bVisible = false; // 커서 숨기기
+
+	SetConsoleCursorInfo(consoleHandle, &cursorInfo);
+}
 
 using namespace std;
 int main() 
 {
-
+	HideCursor();
 	LogManager log;
 	Battle battle;
 	Shop shop;
@@ -56,7 +68,7 @@ int main()
 	player.AddItem(make_unique<HealthPotion>());
 	player.AddItem(make_unique<HealthPotion>());
 	player.AddItem(make_unique<AttackBoost>());
-
+	system("cls"); // 화면 초기화
 	while (!isGameOver)
 	{
 		while (_kbhit())
@@ -68,6 +80,7 @@ int main()
 
 		// 전투 시작
 		log.PrintStartBattle(player, *monster);
+		log.Print(monster->GetName() + "이(가) 나타났다!");
 		//log.PrintMenu("1. 공격  2. 상점  3. 도망 ");
 		log.PrintInventory(player.GetInventory());
 		log.PrintShop();
@@ -76,11 +89,21 @@ int main()
 		// 전투 루프 (선택지 입력 대기)
 		while (monster->GetHp() > 0)
 		{
-			log.PrintMenu("1. 공격  2. 상점  3. 도망 ");
-			log.PrintChoice("어떻게 할까? ");
+			char input = 0;
 
-			// 사용자 입력 대기
-			char input = _getch();
+			while (input == 0)
+			{
+				log.PrintMenu("1. 공격  2. 상점  3. 도망 ");
+				log.PrintChoice("어떻게 할까? ");
+
+				log.PrintStartBattle(player, *monster); // 몬스터 애니메이션 갱신
+				Sleep(100);
+
+				if (_kbhit())
+				{
+					input = _getch();
+				}
+			}
 
 			if (input == '1')
 			{
