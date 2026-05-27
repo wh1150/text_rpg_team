@@ -72,8 +72,46 @@ string LogManager::PrintTitle()
 
 	while (true)
 	{
-		char ch = _getch();
+		unsigned char ch = _getch();
 
+		if(ch == 0 || ch == 224) // 특수키(방향키 등) 입력 시 무시
+		{
+			_getch(); // 특수키는 두 번 입력되므로 한 번 더 읽어서 버립니다.
+			continue;
+		}
+
+		// 엔터
+		if (ch == '\r')
+		{
+			if (!playerName.empty())
+				break;
+			continue;
+		}
+
+		// 백스페이스
+		if (ch == '\b')
+		{
+			if (!playerName.empty())
+			{
+				unsigned char last = playerName.back();
+
+				if (last >= 0x80) // 한글 입력 시 2바이트이므로 두 글자 지우기
+				{
+					if (playerName.size() >= 2)
+					{
+						playerName.pop_back();
+						playerName.pop_back();
+						cout << "\b \b\b \b";
+					}
+				}
+				else
+				{
+					playerName.pop_back();
+					cout << "\b \b";
+				}
+			}
+			continue;
+		}
 
 		// 공백은 입력받지 않음
 		if (ch == ' ' || ch == '\t')
@@ -82,27 +120,34 @@ string LogManager::PrintTitle()
 			continue;
 		}
 
-		// 엔터
-		else if (ch == '\r')
+		if (ch >= 1 && ch <= 26) // Ctrl + 알파벳 같은 제어문자 무시
 		{
-			if (!playerName.empty())
-				break;
+			continue; 
 		}
 
-		// 백스페이스
-		else if (ch == '\b')
+		if ((ch >= 'A' && ch <= 'Z') || 
+			(ch >= 'a' && ch <= 'z') || 
+			(ch >= '0' && ch <= '9')) // 영문자 또는 숫자만 허용
 		{
-			if (!playerName.empty())
+			if (playerName.size() < 10)
 			{
-				playerName.pop_back();
-				cout << "\b \b";
+				playerName += ch;
+				cout << ch;
 			}
+			continue;
 		}
-		// 최대 글자 수 제한 (영어기준 10자. 한글기준 6자 가능)
-		else if (playerName.size() < 10)
+
+		if (ch >= 0x80) // 한글 입력 시 2바이트이므로 두 글자 읽어서 처리
 		{
-			playerName += ch;
-			cout << ch;
+			unsigned char ch2 = _getch();
+			if (playerName.size() < 10)
+			{
+				playerName += ch;
+				playerName += ch2;
+
+				cout << ch << ch2;
+			}
+			continue;
 		}
 	}
 	return playerName;
