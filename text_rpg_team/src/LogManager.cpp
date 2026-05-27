@@ -90,7 +90,7 @@ void LogManager::PrintStartBattle(Player& player, Monster& monster)
 
 	DrawLayout(); // 전투 레이아웃 초기화
 	DrawBattleScene(player, monster); // 전투 장면 초기화
-	DrawLog(monster.GetName() + " 등장!"); // 몬스터 등장 메시지
+	// DrawLog(monster.GetName() + " 등장!"); // 몬스터 등장 메시지
 
 	DrawStatus(player, monster);
 

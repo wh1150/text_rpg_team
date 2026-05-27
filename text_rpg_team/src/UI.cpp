@@ -193,7 +193,6 @@ void DrawTitle()
 // ==========================================
 void DrawLayout()
 {
-    system("cls"); // 화면 초기화
 
     // 박스 레이아웃 배치
     DrawBox(0, 0, 31, 8); // 플레이어 상태창
@@ -205,10 +204,10 @@ void DrawLayout()
     DrawBox(62, 0, 52, 10); // 상점창
 
     // 인벤토리 창 제목 출력
-	Gotoxy(63, 10);  cout << "[인벤토리]";
+	Gotoxy(63, 11);  cout << "[인벤토리]";
 
 
-	Gotoxy(63, 0);  cout << "[상점]";
+	Gotoxy(63, 1);  cout << "[상점]";
 }
 
 
@@ -273,28 +272,28 @@ void DrawMenu(string message)
 void DrawStatus(Player& player, Monster& monster)
 {
     // 플레이어 이름 위치
-    Gotoxy(2, 0);
+    Gotoxy(2, 1);
     cout << "[" << player.GetName() << "]";
 
     //플레이어 레벨 위치
-	Gotoxy(2, 1);
+	Gotoxy(2, 2);
 	cout << "Level: " << player.GetLevel() << "         ";
 
 	// 플레이어 경험치 및 골드 위치
-    Gotoxy(2, 2);
+    Gotoxy(2, 3);
     cout << "Exp: " << player.GetExp() << "/100" << "  Gold: " << player.GetGold() << "   ";
 
     // 플레이어 HP 위치
-    Gotoxy(2, 3);
+    Gotoxy(2, 4);
 	cout << "HP: " << player.GetHp() << "/" << player.GetMaxHp() << "         ";
 
 	// 플레이어 공격력 위치
-    Gotoxy(2, 4);
+    Gotoxy(2, 5);
 	cout << "ATK: " << player.GetAttackPower() << "         ";
 
 
 	// 몬스터 이름 위치
-	Gotoxy(33, 0);
+	Gotoxy(33, 1);
 	cout << "[" <<  monster.GetName() << "]";
 
 	// 몬스터 HP 위치
@@ -310,22 +309,31 @@ void DrawStatus(Player& player, Monster& monster)
 
 void DrawBattleScene(Player& player, Monster& monster)
 {
-    Gotoxy(2, 8);
+    static int offset = 0;
+    static int dir = 1;
+
+    Gotoxy(2, 9);
 	cout << "## (" << player.GetName() << ")  VS  (" << monster.GetName() << ") ##";
 
-	DrawMonster(6, 12, monster);
+    ClearMonsterArea(4, 12, 56, 13);
+	DrawMonster(6 + offset, 12, monster);
+    offset += dir;
+    if (offset >= 1 || offset <= -1)
+    {
+        dir *= -1;
+	}
 }
 
 
 void DrawInventory(const std::vector<std::string>& items)
 {
-  // 인벤토리 영역(63, 11)부터 출력 시작
-     for (int i = 0; i < 6; i++) { // 상자 높이에 맞춰 최대 6개 출력
-         Gotoxy(63, 11 + i);
+  // 인벤토리 영역(63, 12)부터 출력 시작
+     for (int i = 0; i < 5; i++) { // 상자 높이에 맞춰 최대 5개 출력
+         Gotoxy(63, 12 + i);
          cout << "                                              "; // 기존 내용 지우기
          if (i < items.size())
          {
-             Gotoxy(63, 11 + i);
+             Gotoxy(63, 12 + i);
              cout << i + 1 << ". " << items[i];
          }
          else if (i == 0 && items.empty())
@@ -338,9 +346,18 @@ void DrawInventory(const std::vector<std::string>& items)
 
 void DrawShop()
 {
-    Gotoxy(63, 2);
+    Gotoxy(63, 3);
 	cout << "[ 체력 포션 ] (10 Gold)";
 
-	Gotoxy(63, 5);
+	Gotoxy(63, 6);
 	cout << "[ 공격력 증가 포션 ] (30 Gold)";
+}
+
+void ClearMonsterArea(int x, int y, int width, int height)
+{
+    for (int i = 0; i < height; i++)
+    {
+        Gotoxy(x, y + i);
+        cout << string(width, ' ');
+    }
 }
