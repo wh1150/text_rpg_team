@@ -223,3 +223,12 @@ void LogManager::PrintShop()
 {
 	DrawShop();
 }
+
+
+void LogManager::PrintStatus()
+{
+	if(playerPtr != nullptr && monsterPtr != nullptr)
+	{
+		DrawStatus(*playerPtr, *monsterPtr);
+	}
+}

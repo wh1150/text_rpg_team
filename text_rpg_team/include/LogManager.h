@@ -82,4 +82,6 @@ public:
 	void ShowKillCount();
 
 	void PrintShop();
+
+	void PrintStatus();
 };
