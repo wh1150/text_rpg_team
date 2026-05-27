@@ -212,18 +212,35 @@ void DrawLayout()
 }
 
 
+vector<string> logs;
+
 void DrawLog(string message)
 {
+    const int logX = 63;
+    const int logY = 24;
+    const int logWidth = 49;
+    const int logMaxCount = 3;
 
-    // 로그 영역 초기화
-    Gotoxy(63, 25);
-	cout << "                                                 ";
-    
-    // 새 로그 출력
-	Gotoxy(63, 25);
-	cout << ">> " << message;
+    logs.push_back(message);
 
-    Sleep(800);
+    if (logs.size() > logMaxCount)
+    {
+        logs.erase(logs.begin());
+    }
+
+    for (int i = 0; i < logMaxCount; i++)
+    {
+        Gotoxy(logX, logY + i);
+        cout << string(logWidth, ' ');
+    }
+
+    for (int i = 0; i < logs.size(); i++)
+    {
+        Gotoxy(logX, logY + i);
+        cout << ">> " << logs[i];
+    }
+
+    Sleep(1000);
 }
 
 void DrawChoice(string message)

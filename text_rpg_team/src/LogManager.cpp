@@ -15,11 +15,7 @@ LogManager* LogManager::instance = nullptr;
 
 void LogManager::Print(std::string message)
 {
-	Gotoxy(63, 25);
-	cout << "                                           "; // 이전 로그 지우기
-	Gotoxy(63, 25);
-	cout << ">> " << message;
-	Sleep(1000);
+	DrawLog(message);
 }
 
 void LogManager::PrintChoice(std::string message)
