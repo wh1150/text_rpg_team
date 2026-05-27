@@ -49,12 +49,21 @@ string LogManager::PrintTitle()
 	{
 		char ch = _getch();
 
+
+		// 공백은 입력받지 않음
+		if (ch == ' ')
+		{
+			// 공백 입력 시 무시
+			continue;
+		}
+
 		// 엔터
-		if (ch == '\r')
+		else if (ch == '\r')
 		{
 			if (!playerName.empty())
 				break;
 		}
+
 		// 백스페이스
 		else if (ch == '\b')
 		{
