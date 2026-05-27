@@ -52,8 +52,8 @@ void Player::LevelUp() {
     this->level++;
     exp -= maxExp;
     
-    this->maxHp = this->level * 20;
-    this->attackPower = this->level * 5;
+    this->maxHp += 20;
+    this->attackPower += 5;
     this->hp = this->maxHp;
 }
 
