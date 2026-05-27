@@ -107,6 +107,7 @@ int main()
 
 			if (input == '1')
 			{
+				LogManager::GetInstance().PlaySelectSound();
 				battle.StartBattle(player, *monster);
 				if(player.GetHp() <= 0)
 				{
@@ -116,17 +117,20 @@ int main()
 			}
 			else if (input == '2')
 			{
+				LogManager::GetInstance().PlaySelectSound();
 				log.Print("상점에 입장했습니다.");
 				shop.OpenShop(player);
 			}
-			else if (input == '3')
+			else if (input == '3')	
 			{
+				LogManager::GetInstance().PlaySelectSound();
 				log.Print("도망쳤습니다! 용사는 나약합니다.");
 				isGameOver = true;
 				break;
 			}
 			else
 			{
+				LogManager::GetInstance().PlayFalseSound();
 				log.Print("잘못된 입력입니다. 다시 선택해주세요.");
 			}
 		}

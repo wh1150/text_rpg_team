@@ -84,4 +84,11 @@ public:
 	void PrintShop();
 
 	void PrintStatus();
+
+	//사운드 출력
+	void PlayLightAttackSound();
+
+	void PlaySelectSound();
+
+	void PlayFalseSound();
 };

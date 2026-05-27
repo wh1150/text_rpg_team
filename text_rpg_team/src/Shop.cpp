@@ -29,10 +29,12 @@ void Shop::OpenShop(Player& player)
             break;
 
         case '3':
+            LogManager::GetInstance().PlaySelectSound();
             LogManager::GetInstance().Print("전장으로 돌아갑니다.");
             return;
 
         default:
+            LogManager::GetInstance().PlayFalseSound();
             LogManager::GetInstance().Print("잘못된 입력입니다. 다시 선택해주세요.");
             break;
         }
@@ -50,13 +52,14 @@ bool Shop::BuyPotion(Player& player)
         player.SetGold(player.GetGold() - potionPrice);
 
         player.AddItem(std::make_unique<HealthPotion>());
-
+        LogManager::GetInstance().PlaySelectSound();
 		LogManager::GetInstance().Print("체력 포션을 구매했습니다!");
         LogManager::GetInstance().PrintInventory(player.GetInventory());
         LogManager::GetInstance().PrintStatus();
 
         return true; 
     }
+    LogManager::GetInstance().PlayFalseSound();
 	LogManager::GetInstance().Print("골드가 부족합니다...");
 
     return false; // 골드 부족으로 구매 실패
@@ -73,14 +76,14 @@ bool Shop::BuyAttackItem(Player& player)
         player.SetGold(player.GetGold() - itemPrice);
 
         player.AddItem(std::make_unique<AttackBoost>());
-
+        LogManager::GetInstance().PlaySelectSound();
 		LogManager::GetInstance().Print("공격력 증가 포션을 구매했습니다!");
         LogManager::GetInstance().PrintInventory(player.GetInventory());
         LogManager::GetInstance().PrintStatus();
 
         return true; 
     }
-
+    LogManager::GetInstance().PlayFalseSound();
 	LogManager::GetInstance().Print("골드가 부족합니다...");
 
     return false; // 골드 부족으로 구매 실패
