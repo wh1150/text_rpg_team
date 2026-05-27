@@ -29,3 +29,5 @@ void DrawStatus(Player& player, Monster& monster);
 void DrawBattleScene(Player& player, Monster& monster);
 
 void DrawInventory(const std::vector<std::string>& items);
+
+void DrawShop();

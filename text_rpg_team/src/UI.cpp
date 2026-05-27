@@ -169,13 +169,13 @@ void DrawBox(int x, int y, int width, int height)
 void DrawTitle()
 {
     // 첫 번째 줄 (TEAM 13)
-    for (int i = 0; i < titleLine1.size(); i++) {
+    for (size_t i = 0; i < titleLine1.size(); i++) {
         Gotoxy(10, i);
         cout << titleLine1[i];
     }
 
     // 두 번째 줄 (TEXT RPG)
-    for (int i = 0; i < titleLine2.size(); i++) {
+    for (size_t i = 0; i < titleLine2.size(); i++) {
         Gotoxy(10, titleLine1.size() + 2 + i);
         cout << titleLine2[i];
     }
@@ -199,10 +199,10 @@ void DrawLayout()
     DrawBox(0, 0, 31, 8); // 플레이어 상태창
     DrawBox(31, 0, 31, 8); // 몬스터 상태창
     DrawBox(0, 8, 62, 20); // 전투 화면
-    DrawBox(62, 18, 50, 5); // 메뉴창
-	DrawBox(62, 23, 50, 5); // 로그창
-    DrawBox(62, 10, 50, 8); // 인벤토리창
-    DrawBox(62, 0, 50, 10); // 상점창
+    DrawBox(62, 18, 52, 5); // 메뉴창
+	DrawBox(62, 23, 52, 5); // 로그창
+    DrawBox(62, 10, 52, 8); // 인벤토리창
+    DrawBox(62, 0, 52, 10); // 상점창
 
     // 인벤토리 창 제목 출력
 	Gotoxy(63, 10);  cout << "[인벤토리]";
@@ -216,11 +216,11 @@ void DrawLog(string message)
 {
 
     // 로그 영역 초기화
-    Gotoxy(63, 26);
-	cout << "                                      ";
+    Gotoxy(63, 25);
+	cout << "                                           ";
     
     // 새 로그 출력
-	Gotoxy(63, 26);
+	Gotoxy(63, 25);
 	cout << ">> " << message;
 
     Sleep(800);
@@ -230,7 +230,7 @@ void DrawChoice(string message)
 {
     // 로그 영역 초기화
     Gotoxy(63, 19);
-    cout << "                                      ";
+    cout << "                                           ";
 
     // 새 로그 출력
     Gotoxy(63, 19);
@@ -242,7 +242,7 @@ void DrawMenu(string message)
 {
     // 로그 영역 초기화
     Gotoxy(63, 21);
-    cout << "                                      ";
+    cout << "                                           ";
 
     // 새 로그 출력
     Gotoxy(63, 21);
@@ -317,4 +317,13 @@ void DrawInventory(const std::vector<std::string>& items)
 			 cout << "인벤토리가 비어있습니다.";
          }
      }
+}
+
+void DrawShop()
+{
+    Gotoxy(63, 2);
+	cout << "[ 체력 포션 ] (10 Gold)";
+
+	Gotoxy(63, 5);
+	cout << "[ 공격력 증가 포션 ] (30 Gold)";
 }

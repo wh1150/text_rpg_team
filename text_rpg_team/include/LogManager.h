@@ -73,8 +73,6 @@ public:
 		inventoryPtr = &inventory;
 	}
 
-	// 하단의 기능들은 아직 구현되지 않았습니다.
-
 	// 아이템 사용/획득 로그를 출력합니다.
 	void PrintUseItem(Item& item);
 	void PrintGetItem(Item& item);
@@ -82,4 +80,6 @@ public:
 	// 몬스터 처치 기록 및 확인
 	void AddKill(Monster& monster);
 	void ShowKillCount();
+
+	void PrintShop();
 };
