@@ -76,7 +76,7 @@ string LogManager::PrintTitle()
 
 
 		// 공백은 입력받지 않음
-		if (ch == ' ')
+		if (ch == ' ' || ch == '\t')
 		{
 			// 공백 입력 시 무시
 			continue;
