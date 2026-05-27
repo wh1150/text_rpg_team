@@ -16,6 +16,7 @@ LogManager* LogManager::instance = nullptr;
 void LogManager::Print(std::string message)
 {
 	DrawLog(message);
+	Sleep(1000);
 }
 
 void LogManager::PrintChoice(std::string message)
@@ -123,10 +124,12 @@ void LogManager::PrintReward(Player& player, Monster& monster, int gold, std::st
 	if(itemName != "")
 	{
 		DrawLog("아이템 발견: [" + itemName + "]!");
+		Sleep(1000);
 	}
 	else
 	{
 		DrawLog("이번엔 아이템이 안나왔네요..");
+		Sleep(1000);
 	}
 	DrawStatus(player, monster);
 }

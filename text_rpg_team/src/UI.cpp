@@ -240,7 +240,7 @@ void DrawLog(string message)
         cout << ">> " << logs[i];
     }
 
-    Sleep(1000);
+    //Sleep(1000);
 }
 
 void DrawChoice(string message)
