@@ -217,7 +217,7 @@ void DrawLog(string message)
 
     // 로그 영역 초기화
     Gotoxy(63, 25);
-	cout << "                                           ";
+	cout << "                                                 ";
     
     // 새 로그 출력
 	Gotoxy(63, 25);
@@ -230,7 +230,7 @@ void DrawChoice(string message)
 {
     // 로그 영역 초기화
     Gotoxy(63, 19);
-    cout << "                                           ";
+    cout << "                                                  ";
 
     // 새 로그 출력
     Gotoxy(63, 19);
@@ -242,7 +242,7 @@ void DrawMenu(string message)
 {
     // 로그 영역 초기화
     Gotoxy(63, 21);
-    cout << "                                           ";
+    cout << "                                                  ";
 
     // 새 로그 출력
     Gotoxy(63, 21);

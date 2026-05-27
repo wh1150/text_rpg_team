@@ -63,7 +63,7 @@ int main()
 
 		// 전투 시작
 		log.PrintStartBattle(player, *monster);
-		log.PrintMenu("1. 공격  2. 상점  3. 도망 ");
+		//log.PrintMenu("1. 공격  2. 상점  3. 도망 ");
 		log.PrintInventory(player.GetInventory());
 		log.PrintShop();
 
@@ -71,6 +71,7 @@ int main()
 		// 전투 루프 (선택지 입력 대기)
 		while (monster->GetHp() > 0)
 		{
+			log.PrintMenu("1. 공격  2. 상점  3. 도망 ");
 			log.PrintChoice("어떻게 할까? ");
 
 			// 사용자 입력 대기
