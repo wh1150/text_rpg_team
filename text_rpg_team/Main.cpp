@@ -59,6 +59,11 @@ int main()
 
 	while (!isGameOver)
 	{
+		while (_kbhit())
+		{
+			_getch();
+		}
+
 		Monster* monster = CreateRandomMonster(player.GetLevel());
 
 		// 전투 시작
@@ -67,7 +72,7 @@ int main()
 		log.PrintInventory(player.GetInventory());
 		log.PrintShop();
 
-
+		
 		// 전투 루프 (선택지 입력 대기)
 		while (monster->GetHp() > 0)
 		{
