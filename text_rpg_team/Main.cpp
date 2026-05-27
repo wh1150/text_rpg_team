@@ -85,6 +85,11 @@ int main()
 			if (input == '1')
 			{
 				battle.StartBattle(player, *monster);
+				if(player.GetHp() <= 0)
+				{
+					isGameOver = true;
+					break;
+				}
 			}
 			else if (input == '2')
 			{

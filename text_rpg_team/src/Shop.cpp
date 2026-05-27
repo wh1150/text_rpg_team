@@ -25,11 +25,11 @@ void Shop::OpenShop(Player& player)
             break;
 
         case '3':
-			// TODO : 상점에서 나가기
+            LogManager::GetInstance().Print("전장으로 돌아갑니다.");
             return;
 
         default:
-			// TODO : 잘못된 입력 처리
+            LogManager::GetInstance().Print("잘못된 입력입니다. 다시 선택해주세요.");
             break;
         }
     }
@@ -46,6 +46,8 @@ bool Shop::BuyPotion(Player& player)
         player.SetGold(player.GetGold() - potionPrice);
 
 		LogManager::GetInstance().Print("체력 포션을 구매했습니다!");
+        LogManager::GetInstance().PrintInventory(player.GetInventory());
+        LogManager::GetInstance().PrintStatus();
 
         return true; 
     }
@@ -65,6 +67,8 @@ bool Shop::BuyAttackItem(Player& player)
         player.SetGold(player.GetGold() - itemPrice);
 
 		LogManager::GetInstance().Print("공격력 증가 포션을 구매했습니다!");
+        LogManager::GetInstance().PrintInventory(player.GetInventory());
+        LogManager::GetInstance().PrintStatus();
 
         return true; 
     }
