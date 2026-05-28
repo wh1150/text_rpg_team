@@ -300,6 +300,9 @@ void DrawStatus(Player& player, Monster& monster)
 
 
 	// 몬스터 이름 위치
+    Gotoxy(33, 1);
+    cout << "                        ";
+
 	Gotoxy(33, 1);
 	cout << YELLOW << "[" <<  monster.GetName() << "]" << RESET;
 
