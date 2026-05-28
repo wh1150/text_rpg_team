@@ -318,6 +318,8 @@ void DrawBattleScene(Player& player, Monster& monster)
 {
     static int offset = 0;
     static int dir = 1;
+    Gotoxy(2, 9);
+	cout << "                                               ";
 
     Gotoxy(2, 9);
 	cout << YELLOW << "##" << RESET << " [" << player.GetName() << "]" << RED << "  VS  " << RESET << "[" << monster.GetName() << "] " << YELLOW << "##" << RESET;
