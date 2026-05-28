@@ -38,6 +38,24 @@ void LogManager::PlayFalseSound()
 	Beep(200, 25);
 }
 
+void LogManager::PlayKillMonster()
+{
+	Beep(500, 80);   
+	Beep(660, 80);   
+	Beep(790, 100);  
+	Beep(1050, 300);
+}
+
+void LogManager::PlayLevelUp()
+{
+	Beep(700, 50);
+	Beep(1000, 70);
+	Beep(1200, 110);
+	Beep(600, 70);
+	Beep(900, 80);
+	Beep(1100, 100);
+}
+
 void LogManager::Print(std::string message)
 {
 	DrawLog(message);
@@ -193,6 +211,7 @@ void LogManager::PrintStatus(Player& player)
 void LogManager::PrintReward(Player& player, Monster& monster, int gold, std::string itemName)
 {
 	DrawLog(YELLOW "★ 축! 몬스터를 해치웠다!! ★" RESET);
+	LogManager::GetInstance().PlayKillMonster();
 	Sleep(1000);
 
 	DrawLog(YELLOW "골드 " RESET + to_string(gold) + "획득. (총: " + to_string(player.GetGold()) + ")");

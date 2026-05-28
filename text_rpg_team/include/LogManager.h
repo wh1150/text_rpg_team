@@ -91,4 +91,8 @@ public:
 	void PlaySelectSound();
 
 	void PlayFalseSound();
+
+	void PlayKillMonster();
+
+	void PlayLevelUp();
 };
