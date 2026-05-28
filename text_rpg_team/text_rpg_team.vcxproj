@@ -190,7 +190,7 @@
 		<ClInclude Include="include\LogManager.h" />
 		<ClInclude Include="include\Player.h" />
 		<ClInclude Include="include\UI.h" />
-		<ClCompile Include="include/Shop.h" />
+		<ClInclude Include="include/Shop.h" />
 	</ItemGroup>
 	<Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
 	<ImportGroup Label="ExtensionTargets">

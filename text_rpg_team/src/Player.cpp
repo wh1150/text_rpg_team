@@ -52,6 +52,7 @@ int Player::SetExp(int exp)
 }
 
 void Player::LevelUp() {
+    LogManager::GetInstance().PlayLevelUp();
 	LogManager::GetInstance().Print(YELLOW "★ 레벨업! ★" RESET);
     this->level++;
     exp -= maxExp;
